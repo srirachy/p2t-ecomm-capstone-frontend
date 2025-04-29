@@ -1,6 +1,12 @@
 const Socials = () => {
   return (
-    <div>Socials</div>
+    <aside>
+      <figure>discord</figure>
+      <figure>instagram</figure>
+      <figure>linkedin</figure>
+      <figure>twitch</figure>
+      <figure>youtube</figure>
+    </aside>
   )
 }
 

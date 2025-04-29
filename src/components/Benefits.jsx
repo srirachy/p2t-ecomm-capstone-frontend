@@ -1,6 +1,8 @@
 const Benefits = () => {
   return (
-    <div>Benefits</div>
+    <section>
+      <div>Benefits</div>
+    </section>
   )
 }
 
