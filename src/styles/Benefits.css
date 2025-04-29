@@ -1,0 +1,7 @@
+#benefit-section {
+    width: 100vw;
+    min-height: 1vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--errigal-white);
+}

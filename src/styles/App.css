@@ -1,14 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap');
 
-/* 
-  font example--
-  font-family: "Abril Fatface", serif;
-  font-weight: 400;
-  font-style: normal;
-*/ 
-
 #root {
-  min-height: 1vh;
+  min-height: 100vh;
 }
 
 h1 {
@@ -16,6 +9,7 @@ h1 {
   font-size: 1.4rem;
   font-family: "Abril Fatface", serif;
   color: var(--brassy-brass);
+  margin: 0 auto;
 }
 
 h2 {

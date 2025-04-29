@@ -1,0 +1,21 @@
+.benefit-card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    min-height: 1vh;
+}
+
+.benefit-card-container > figure {
+    width: 260px;
+    margin: 6px auto;
+}
+
+.benefit-card-container > figure > img {
+    width: 100%;
+    border-radius: 6px;
+}
+
+.benefit-card-text {
+    width: 260px;
+}
