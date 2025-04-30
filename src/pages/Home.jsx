@@ -2,7 +2,7 @@ import Hero from '../components/Hero';
 import Socials from '../components/Socials';
 import Benefits from '../components/Benefits';
 import Features from '../components/Features';
-import CardDesign from '../components/CardDesign';
+import Designs from '../components/Designs'
 import CTA from '../components/CTA';
 
 const Home = () => {
@@ -12,7 +12,7 @@ const Home = () => {
       <Socials />
       <Benefits />
       <Features />
-      <CardDesign />
+      <Designs />
       <CTA />
     </>
   )
