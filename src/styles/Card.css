@@ -1,0 +1,21 @@
+.card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    min-height: 1vh;
+}
+
+.card-container > figure {
+    width: 260px;
+    margin: 6px auto;
+}
+
+.card-container > figure > img {
+    width: 100%;
+    border-radius: 6px;
+}
+
+.card-text {
+    width: 260px;
+}

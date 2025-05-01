@@ -1,0 +1,27 @@
+#cta-section {
+    width: 100vw;
+    min-height: 1vh;
+    background-image: url('../assets/cta-img.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#cta-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+    width: 60%;
+    margin: 6px auto;
+    min-height: 100%;
+    background-color: var(--speed-of-light);
+}
+
+#cta-container > button {
+    margin-bottom: 6px;
+}

@@ -1,0 +1,22 @@
+footer {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    min-height: 1vh;
+    padding: 6px 0px;
+    background-color: var(--speed-of-light);
+}
+
+#logo-link-container, #copyright-policy-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#logo-container, #copyright-container {
+    margin-left: 6px;
+}
+
+#link-container, #privacy-container {
+    margin-right: 6px;
+}

@@ -1,0 +1,20 @@
+#socials {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: var(--speed-of-light);
+    width: 100vw;
+    min-height: 1vh;
+}
+
+#socials > figure {
+    margin: 6px auto;
+}
+
+#socials > figure > img {
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+}

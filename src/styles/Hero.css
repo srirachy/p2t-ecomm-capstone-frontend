@@ -1,0 +1,26 @@
+#hero-section {
+    width: 100vw;
+    min-height: 1vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--errigal-white);
+}
+
+#hero-text-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 1vh;
+    align-items: center;
+    text-align: center;
+}
+
+#hero-img-container {
+    /* padding: 0; */
+    margin: 6px auto;
+    width: 360px;
+}
+
+#hero-img-container > img {
+    width: 100%;
+}

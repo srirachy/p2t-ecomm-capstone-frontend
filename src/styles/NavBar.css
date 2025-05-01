@@ -1,0 +1,18 @@
+nav {
+    position: sticky;
+    top: 0;
+    background-color: var(--speed-of-light);
+    min-width: 100vw;
+    height: 3.625rem;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+
+#logo-container {
+    margin-left: 20px;
+}
+
+#auth-container {
+    margin-right: 20px;
+}

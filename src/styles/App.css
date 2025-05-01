@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap');
+
+#root {
+  min-height: 100vh;
+}
+
+h1 {
+  /* font-size: 3rem; */
+  font-size: 1.4rem;
+  font-family: "Abril Fatface", serif;
+  color: var(--brassy-brass);
+  margin: 0 auto;
+}
+
+h2 {
+  /* font-size: 2rem; */
+  font-size: 1rem;
+  font-family: "Abril Fatface", serif;
+  color: var(--brassy-brass);
+}
+
+h3 {
+  /* font-size: 1.1rem; */
+  font-size: 0.9rem;
+  font-family: "Abril Fatface", serif;
+  color: var(--brassy-brass);
+}
+
+p {
+  /* font-size: 1rem; */
+  font-size: 0.8rem;
+  font-family: "Instrument Sans";
+  color: var(--swamp-fox);
+}
+
+button {
+  background-color: var(--swamp-fox);
+}
+
+span {
+  font-size: 0.8rem;
+  font-family: "Instrument Sans";
+  color: var(--brassy-brass);
+}
+
+/* main {
+  background-color: var(--errigal-white);
+} */

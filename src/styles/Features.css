@@ -1,0 +1,21 @@
+#feature-section {
+    min-height: 1vh;
+    width: 100vw;
+    background-color: var(--speed-of-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#feature-img-container {
+    width: 260px;
+    margin: 6px auto;
+}
+
+#feature-img-container > img {
+    width: 100%;
+}
+
+#features-container {
+    width: 260px;
+}

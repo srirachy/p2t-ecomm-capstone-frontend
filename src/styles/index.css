@@ -1,0 +1,18 @@
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+:root {
+  --speed-of-light: #f6f4f0;
+  --classic-chalk: #f5f3f0;
+  --errigal-white: #f0f2f5;
+  --brassy-brass: #755b26;
+  --swamp-fox: #b59b67;
+  --midnight-ocean: #0b254b;
+  --chesty-bond: #4e6ea0;
+}
+
