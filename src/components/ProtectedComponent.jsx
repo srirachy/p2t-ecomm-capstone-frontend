@@ -4,21 +4,14 @@ const ProtectedComponent = () => {
   const { getAccessTokenSilently } = useAuth0();
 
   const callApi = async () => {
-    const ep = 'api/private-scoped';
+    const ep = 'api/manage-product';
 
     
     try {
       // Get the token silently (checks cache first)
-      console.log('yo')
-      const token = await getAccessTokenSilently({
-        authorizationParams: {
-            audience: import.meta.env.VITE_AUTH0_AUDIENCE,
-            scope: "read:products",
-      },}).catch((error) => {
-        console.error("Silent token error:", error); // Debug silent renewal
-        throw error;
-      });
-      console.log(token);
+      // console.log('yo')
+      const token = await getAccessTokenSilently(); // still need to request token to assure user is who they be
+      // console.log(token);
       
       // Use the token in an API request
       const response = await fetch(import.meta.env.VITE_BACKEND_URI + ep, {
