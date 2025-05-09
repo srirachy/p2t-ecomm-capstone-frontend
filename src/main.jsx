@@ -42,7 +42,7 @@ createRoot(document.getElementById('root')).render(
           scope: import.meta.env.VITE_AUTH0_SCOPE,
       }}
       useRefreshTokens={true}
-      cacheLocation='localstorage'
+      cacheLocation={import.meta.env.VITE_AUTH0_CACHELOC}
     >
       <RouterProvider router={router} />
     </Auth0Provider>

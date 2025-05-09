@@ -3,7 +3,6 @@ import { useAuth0 } from '@auth0/auth0-react';
 import LoginButton from './LoginButton';
 import LogoutButton from './LogoutButton';
 import '../styles/NavBar.css'
-// import ProtectedComponent from './ProtectedComponent';
 
 const NavBar = () => {
   const { isAuthenticated } = useAuth0();
@@ -14,7 +13,6 @@ const NavBar = () => {
       </div>
       <div id='link-container'>
         <NavLink to='/products'>Products</NavLink>
-        {/* <ProtectedComponent /> */}
       </div>
       <div id='auth-container'>
         {isAuthenticated ? <LogoutButton /> : <LoginButton />}

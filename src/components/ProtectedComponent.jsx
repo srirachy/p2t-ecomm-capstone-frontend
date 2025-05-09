@@ -8,12 +8,8 @@ const ProtectedComponent = () => {
 
     
     try {
-      // Get the token silently (checks cache first)
-      // console.log('yo')
-      const token = await getAccessTokenSilently(); // still need to request token to assure user is who they be
-      console.log(token);
-      
-      // Use the token in an API request
+      const token = await getAccessTokenSilently();
+
       const response = await fetch(import.meta.env.VITE_BACKEND_URI + ep, {
         headers: {
           Authorization: `Bearer ${token}`,
