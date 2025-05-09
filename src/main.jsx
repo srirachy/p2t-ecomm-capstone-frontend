@@ -5,10 +5,11 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from 'react-router-dom';
-import './styles/index.css';
 import App from './App.jsx';
 import Error from './pages/Error';
 import Home from './pages/Home'
+import Product from './pages/Product.jsx';
+import './styles/index.css';
 
 const router = createBrowserRouter(
   [
@@ -21,6 +22,10 @@ const router = createBrowserRouter(
           path: '/',
           element: <Home />
         },
+        {
+          path: '/products',
+          element: <Product />
+        }
       ],
     }
   ]
