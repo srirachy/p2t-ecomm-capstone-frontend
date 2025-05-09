@@ -4,6 +4,10 @@
   min-height: 100vh;
 }
 
+main {
+  height: 100%;
+}
+
 h1 {
   /* font-size: 3rem; */
   font-size: 1.4rem;
