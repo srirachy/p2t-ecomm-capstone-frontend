@@ -68,7 +68,7 @@ const ProductAdmin = () => {
             const uploadedImages = await uploadImages(imageFiles);
             
             const ep = 'products';
-            const res = await fetch(`${import.meta.env.VITE_BACKEND_URI}${ep}`,
+            const res = await fetch(import.meta.env.VITE_BACKEND_URI + ep,
                 {
                     method: 'POST',
                     headers: {
@@ -77,6 +77,7 @@ const ProductAdmin = () => {
                     },
                     body: JSON.stringify({
                         ...formData,
+                        slug: slugIt(formData.name),
                         price: Number(formData.price),
                         images: uploadedImages,
                     })
@@ -95,7 +96,56 @@ const ProductAdmin = () => {
     };
 
     return (
-        <div>ProductAdmin</div>
+        <section id='product-admin-container'>
+            <h1>Create New Product</h1>
+
+            <form onSubmit={handleSubmit(onSubmit)} id='product-admin-form'>
+                <div className='product-admin-form-group'>
+                    <label>Product Name</label>
+                    <input 
+                        {...register('name', { required: 'Required' })}
+                        className={errors.name && 'product-admin-error'}
+                    />
+                    {errors.name && <span className='product-admin-error-message'>{errors.name.message}</span>}
+                </div>
+
+                <div className='product-admin-form-group'>
+                    <label>Product Images*</label>
+                    <input 
+                        type='file'
+                        accept="image/*"
+                        multiple
+                        onChange={handleImageChange}
+                        className='product-admin-file-input'
+                    />
+
+                    <div className='product-admin-image-previews'>
+                        {imagePreviews.map((preview, index) => (
+                            <img 
+                                key={index}
+                                src={preview}
+                                alt={`Preview ${index}`}
+                                className='product-admin-preview-image'
+                            />
+                        ))}
+                    </div>
+
+                    {isUploading && (
+                        <progress value={uploadProgress} max="100" className='product-admin-progress-bar' />
+                    )}
+                </div>
+
+                {/* Price */}
+
+                <button
+                    type='submit'
+                    className='product-admin-submit-btn'
+                    disabled={isUploading}
+                >
+                    {isUploading ? 'Creating...' : 'Create Product'}
+                </button>
+            </form>
+        </section>
     )
 }
 
