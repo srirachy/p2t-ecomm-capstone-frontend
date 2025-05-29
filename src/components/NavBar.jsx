@@ -82,6 +82,7 @@ const NavBar = () => {
         <>
           <div id='link-container'>
             <Link to='/products'>Products</Link>
+            {/* Not sure if I like Admin button in desktop view. */}
             {isAdmin && (
               <div id='dropdown-container'>
                 <button
