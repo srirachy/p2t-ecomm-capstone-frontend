@@ -47,6 +47,11 @@ span {
   color: var(--brassy-brass);
 }
 
-/* main {
-  background-color: var(--errigal-white);
-} */
+.dropdown-item {
+    font-family: "Instrument Sans";
+    color: var(--swamp-fox);
+    text-decoration: none;
+    transition: opacity 0.3s;
+    cursor: pointer;
+    font-size: 2rem;
+}
