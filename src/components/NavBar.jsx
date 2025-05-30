@@ -82,38 +82,40 @@ const NavBar = () => {
         <>
           <div id='link-container'>
             <Link to='/products'>Products</Link>
-            {/* Not sure if I like Admin button in desktop view. */}
             {isAdmin && (
-              <div id='dropdown-container'>
-                <button
-                  id='dropdown-toggle'
-                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                >
-                  Admin
-                  <span id={`dropdown-arrow${isDropdownOpen ? '-open' : ''}`}>
-                    ▼
-                  </span>
-                </button>
+              <>
+                {!isMobile 
+                  ? 
+                  (<Link to="/admin/products/create">
+                    Add Product
+                  </Link>) 
+                  : 
+                  (
+                    <div id='dropdown-container'>
+                      <button
+                        id='dropdown-toggle'
+                        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                      >
+                        Admin
+                        <span id={`dropdown-arrow${isDropdownOpen ? '-open' : ''}`}>
+                          ▼
+                        </span>
+                      </button>
 
-                {isDropdownOpen && (
-                  <div id='dropdown-menu'>
-                    <Link
-                      to='/admin/products/create'
-                      className='dropdown-item'
-                      onClick={() => setIsDropdownOpen(false)}
-                    >
-                      Add Product
-                    </Link>
-                    {/* <Link
-                  to='/admin/orders/view'
-                  className='dropdown-item'
-                  onClick={() => setIsDropdownOpen(false)}
-                >
-                  View Order
-                </Link> */}
-                  </div>
-                )}
-              </div>
+                      {isDropdownOpen && (
+                        <div id='dropdown-menu'>
+                          <Link
+                            to='/admin/products/create'
+                            className='dropdown-item'
+                            onClick={() => setIsDropdownOpen(false)}
+                          >
+                            Add Product
+                          </Link>
+                        </div>
+                      )}
+                    </div>
+                  )}
+              </>
             )}
           </div>
           <div id='auth-container'>

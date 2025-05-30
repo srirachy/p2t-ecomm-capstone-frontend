@@ -96,8 +96,7 @@ nav {
 .ham-menu {
     position: fixed;
     top: 3.625rem;
-    left: -100%;
-    width: 100%;
+    width: 100vw;
     min-height: 90vh;
     display: flex;
     flex-direction: column;
