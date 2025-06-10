@@ -1,14 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
+import { useOutletContext } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useAuth0 } from '@auth0/auth0-react';
+import { nanoid } from 'nanoid';
 import { slugIt } from '../utils';
 import '../styles/ProductAdmin.css';
 
 const ProductAdmin = () => {
+    const {categories} = useOutletContext();
     const { getAccessTokenSilently } = useAuth0();
     const [ imagePreviews, setImagePreviews ] = useState([]);
     const [ isUploading, setIsUploading ] = useState(false);
-    const [ categories, setCategories ] = useState([]);
     const [ selectedCategories, setSelectedCategories ] = useState([]);
     const {
         register,
@@ -18,16 +20,6 @@ const ProductAdmin = () => {
         setValue,
         watch, 
     } = useForm();
-
-    useEffect(() => {
-        const fetchCategories = async() => {
-            const ep = 'products/data/category'
-            const res = await fetch(import.meta.env.VITE_BACKEND_URI + ep);
-            const data = await res.json();
-            setCategories(data);
-        }
-        fetchCategories();
-    }, []);
 
     const handleImageChange = (e) => {
         const files = Array.from(e.target.files);
@@ -75,7 +67,6 @@ const ProductAdmin = () => {
                 alert('Product created successfully!');
                 reset();
                 setImagePreviews([]);
-                setCategories([]);
                 setSelectedCategories([]);
             }
         } catch ( error ) {
@@ -113,7 +104,7 @@ const ProductAdmin = () => {
                     <div className='product-admin-image-previews'>
                         {imagePreviews.map((preview, index) => (
                             <img 
-                                key={index}
+                                key={nanoid()}
                                 src={preview}
                                 alt={`Preview ${index}`}
                                 className='product-admin-preview-image'
@@ -126,7 +117,7 @@ const ProductAdmin = () => {
                     <label>Categories*</label>
                     <div id='product-admin-category-grid'>
                         {categories.map(category => (
-                            <div key={category} className='product-admin-category-option'>
+                            <div key={nanoid()} className='product-admin-category-option'>
                                 <input
                                     type='checkbox'
                                     id={`category-${category}`}
