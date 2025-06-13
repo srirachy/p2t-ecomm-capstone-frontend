@@ -3,9 +3,9 @@ import { useOutletContext } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import { fetchData } from '../api/services'
 import ProductCard from '../components/ProductCard';
-import '../styles/Product.css';
+import '../styles/Products.css';
 
-const Product = () => {
+const Products = () => {
   const {categories} = useOutletContext();
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState('');
@@ -58,4 +58,4 @@ const Product = () => {
   )
 }
 
-export default Product;
+export default Products;

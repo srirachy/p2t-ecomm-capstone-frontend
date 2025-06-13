@@ -11,6 +11,7 @@ import Home from './pages/Home'
 import Products from './pages/Products.jsx';
 import './styles/index.css';
 import ProductAdmin from './pages/ProductAdmin.jsx';
+import ProductSingle from './pages/ProductSingle.jsx';
 
 const router = createBrowserRouter(
   [
@@ -30,6 +31,10 @@ const router = createBrowserRouter(
         {
           path: '/admin/products/create',
           element: <ProductAdmin />
+        },
+        {
+          path: '/products/:slug',
+          element: <ProductSingle />
         }
       ],
     }

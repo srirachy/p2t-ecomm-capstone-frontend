@@ -6,11 +6,7 @@ const ProductCard = ({name, slug, price, categories, images, shortDesc, longDesc
     <div className='product-card'>
       <Link 
         to={`/products/${slug}`}
-        name={name}
-        price={price}
-        categories={categories}
-        images={images}
-        longDesc={longDesc}
+        slug={slug}
       >
         <figure>
           <img src={images.url} alt={images.altText} />
