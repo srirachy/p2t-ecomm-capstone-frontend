@@ -5,9 +5,10 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { nanoid } from 'nanoid';
 import { slugIt } from '../utils';
 import '../styles/ProductAdmin.css';
+import categorySlice from '../store';
 
 const ProductAdmin = () => {
-    const {categories} = useOutletContext();
+    const { categories } = categorySlice();
     const { getAccessTokenSilently } = useAuth0();
     const [ imagePreviews, setImagePreviews ] = useState([]);
     const [ isUploading, setIsUploading ] = useState(false);
@@ -92,7 +93,7 @@ const ProductAdmin = () => {
                 </div>
 
                 <div className='product-admin-form-group'>
-                    <label>Product Images*</label>
+                    <label>Product Images</label>
                     <input 
                         type='file'
                         accept='image/*'
@@ -114,7 +115,7 @@ const ProductAdmin = () => {
                 </div>
 
                 <div className='product-admin-form-group'>
-                    <label>Categories*</label>
+                    <label>Categories</label>
                     <div id='product-admin-category-grid'>
                         {categories.map(category => (
                             <div key={nanoid()} className='product-admin-category-option'>

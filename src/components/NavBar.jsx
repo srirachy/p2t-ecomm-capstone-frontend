@@ -10,7 +10,7 @@ import '../styles/NavBar.css'
 
 const NavBar = () => {
   const { isAuthenticated, getAccessTokenSilently } = useAuth0();
-  const {isAdmin, setIsAdmin} = adminSlice();
+  const { isAdmin, setIsAdmin } = adminSlice();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);

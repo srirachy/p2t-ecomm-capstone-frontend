@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
+import adminSlice from '../store';
 import '../styles/ProductCard.css';
 
 const ProductCard = ({name, slug, price, categories, images, shortDesc, longDesc}) => {
+  const { isAdmin } = adminSlice();
   return (
     <div className='product-card'>
       <Link 
@@ -15,10 +17,19 @@ const ProductCard = ({name, slug, price, categories, images, shortDesc, longDesc
         <p>{price}</p>
         <p>{categories}</p>
         <p>{shortDesc}</p>
-        <button>Add to Cart</button>
       </Link>
+      <div>
+        <button>Add to Cart</button>
+        { isAdmin &&
+          <div>
+            <button>Edit</button>
+            <button>Delete</button>
+          </div>
+        }
+      </div>
+      
     </div>
   )
 }
 
-export default ProductCard
+export default ProductCard;

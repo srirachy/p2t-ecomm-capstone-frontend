@@ -9,7 +9,7 @@ import '../styles/Products.css';
 const Products = () => {
   const {categories} = categorySlice();
   const [products, setProducts] = useState([]);
-  // const [category, setCategory] = useState('');
+  // const [filter, setFilter] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   
