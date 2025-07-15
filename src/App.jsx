@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { fetchData } from './api/services';
+import categorySlice from './store';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import './styles/App.css';
 
 function App() {
-  const [categories, setCategories] = useState([]);
+  const { setCategories } = categorySlice();
+  // const [categories, setCategories] = useState([]);
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -26,7 +28,7 @@ function App() {
     <>
       <NavBar />
       <main>
-        <Outlet context={{ categories }}/>
+        <Outlet />
       </main>
       <Footer />
     </>

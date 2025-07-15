@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
+import adminSlice from '../store';
 import LoginButton from './LoginButton';
 import LogoutButton from './LogoutButton';
 import Logo from '../assets/logo.png'
@@ -9,7 +10,7 @@ import '../styles/NavBar.css'
 
 const NavBar = () => {
   const { isAuthenticated, getAccessTokenSilently } = useAuth0();
-  const [isAdmin, setIsAdmin] = useState(false);
+  const {isAdmin, setIsAdmin} = adminSlice();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);

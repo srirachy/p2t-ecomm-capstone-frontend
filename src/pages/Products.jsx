@@ -1,14 +1,15 @@
 import { useEffect, useState } from 'react';
-import { useOutletContext } from 'react-router-dom';
+// import { useOutletContext } from 'react-router-dom';
+import categorySlice from '../store';
 import { nanoid } from 'nanoid';
 import { fetchData } from '../api/services'
 import ProductCard from '../components/ProductCard';
 import '../styles/Products.css';
 
 const Products = () => {
-  const {categories} = useOutletContext();
+  const {categories} = categorySlice();
   const [products, setProducts] = useState([]);
-  const [category, setCategory] = useState('');
+  // const [category, setCategory] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   
