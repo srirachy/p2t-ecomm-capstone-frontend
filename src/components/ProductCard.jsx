@@ -10,8 +10,9 @@ const ProductCard = ({name, slug, price, categories, images, shortDesc, longDesc
         to={`/products/${slug}`}
         slug={slug}
       >
+        {/* carousel images eventually */}
         <figure>
-          <img src={images.url} alt={images.altText} />
+          <img src={images[0].url} alt={images[0].altText} />
         </figure>
         <p>{name}</p>
         <p>{price}</p>
