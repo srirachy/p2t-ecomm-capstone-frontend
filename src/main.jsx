@@ -8,9 +8,10 @@ import {
 import App from './App.jsx';
 import Error from './pages/Error';
 import Home from './pages/Home'
-import Product from './pages/Product.jsx';
+import Products from './pages/Products.jsx';
 import './styles/index.css';
 import ProductAdmin from './pages/ProductAdmin.jsx';
+import ProductSingle from './pages/ProductSingle.jsx';
 
 const router = createBrowserRouter(
   [
@@ -25,11 +26,15 @@ const router = createBrowserRouter(
         },
         {
           path: '/products',
-          element: <Product />
+          element: <Products />
         },
         {
           path: '/admin/products/create',
           element: <ProductAdmin />
+        },
+        {
+          path: '/products/:slug',
+          element: <ProductSingle />
         }
       ],
     }
