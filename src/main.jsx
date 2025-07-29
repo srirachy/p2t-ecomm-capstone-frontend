@@ -11,7 +11,7 @@ import Home from './pages/Home'
 import Products from './pages/Products.jsx';
 import './styles/index.css';
 import ProductAdmin from './pages/ProductAdmin.jsx';
-import ProductSingle from './pages/ProductSingle.jsx';
+import Cart from './pages/Cart.jsx';
 
 const router = createBrowserRouter(
   [
@@ -33,8 +33,8 @@ const router = createBrowserRouter(
           element: <ProductAdmin />
         },
         {
-          path: '/products/:slug',
-          element: <ProductSingle />
+          path: '/cart',
+          element: <Cart />
         }
       ],
     }
