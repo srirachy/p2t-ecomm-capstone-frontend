@@ -1,20 +1,18 @@
 import { useEffect, useState } from 'react';
-// import { useOutletContext } from 'react-router-dom';
-import categorySlice from '../store';
 import { nanoid } from 'nanoid';
-import { fetchData } from '../api/services';
 import { useAuth0 } from '@auth0/auth0-react';
+import { fetchData } from '../api/services';
 import adminSlice from '../store';
+import categorySlice from '../store';
 import ProductCard from '../components/ProductCard';
 import '../styles/Products.css';
 
 const Products = () => {
   const {categories} = categorySlice();
   const [products, setProducts] = useState([]);
-  // const [filter, setFilter] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const { getAccessTokenSilently } = useAuth0();
+  const { getAccessTokenSilently, user } = useAuth0();
   const { isAdmin } = adminSlice();
   
   useEffect(() => {
@@ -56,6 +54,30 @@ const Products = () => {
     }
   }
 
+  const addToCart = async (productId, quantity) => {
+    if (user) {
+      const token = await getAccessTokenSilently();
+      try {
+        const ep = import.meta.env.VITE_BACKEND_URI + `cart/add`;
+        const res = await fetch(ep, {
+          method: 'POST',
+          body: JSON.stringify({
+            productId,
+            quantity,
+          }),
+          headers: { 
+             'Content-Type': 'application/json',
+             Authorization: `Bearer ${token}`},
+        });
+        if (res.ok) {
+          console.log('added to cart')
+        }
+      } catch ( error ) {
+        console.error('Error:', error);
+      }
+    }
+  }
+
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
@@ -82,6 +104,7 @@ const Products = () => {
             longDesc={product.longDescription}
             deleteProduct={deleteProduct}
             isAdmin={isAdmin}
+            addToCart={addToCart}
           />
         ))}
       </div>

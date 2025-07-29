@@ -1,19 +1,19 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
+import { FaBars, FaTimes } from 'react-icons/fa';
 import adminSlice from '../store';
 import LoginButton from './LoginButton';
 import LogoutButton from './LogoutButton';
 import Logo from '../assets/logo.png'
-import { FaBars, FaTimes } from 'react-icons/fa';
 import '../styles/NavBar.css'
 
 const NavBar = () => {
   const { isAuthenticated, getAccessTokenSilently } = useAuth0();
   const { isAdmin, setIsAdmin } = adminSlice();
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [ isDropdownOpen, setIsDropdownOpen ] = useState(false);
+  const [ isOpen, setIsOpen ] = useState(false);
+  const [ isMobile, setIsMobile ] = useState(window.innerWidth <= 768);
 
   useEffect(() => {
     const handleResize = () => {
@@ -41,7 +41,7 @@ const NavBar = () => {
   }, [isAuthenticated]);
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen);
+    setIsOpen(!isOpen)
   }
 
   return (
@@ -56,6 +56,7 @@ const NavBar = () => {
           </button>
           <div className={`ham-menu ${isMobile ? (isOpen ? "active" : "hidden") : ""}`}>
             <Link to='/products' className='dropdown-item' onClick={toggleMenu}>Products</Link>
+            <Link to='/cart' className='dropdown-item' onClick={toggleMenu}>Cart</Link>
             {isAdmin && (
               <>
                 <Link
@@ -83,6 +84,7 @@ const NavBar = () => {
         <>
           <div id='link-container'>
             <Link to='/products'>Products</Link>
+            {isAuthenticated && <Link to='/cart'>Cart</Link>}
             {isAdmin && (
               <>
                 {!isMobile 

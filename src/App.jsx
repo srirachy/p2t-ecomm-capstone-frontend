@@ -8,7 +8,8 @@ import './styles/App.css';
 
 function App() {
   const { setCategories } = categorySlice();
-  // const [categories, setCategories] = useState([]);
+
+
   useEffect(() => {
     const fetchCategories = async () => {
       try {
