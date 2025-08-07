@@ -9,9 +9,11 @@ import App from './App.jsx';
 import Error from './pages/Error';
 import Home from './pages/Home'
 import Products from './pages/Products.jsx';
-import './styles/index.css';
 import ProductAdmin from './pages/ProductAdmin.jsx';
 import Cart from './pages/Cart.jsx';
+import Success from './pages/Success.jsx';
+import Cancel from './pages/Cancel.jsx';
+import './styles/index.css';
 
 const router = createBrowserRouter(
   [
@@ -35,6 +37,14 @@ const router = createBrowserRouter(
         {
           path: '/cart',
           element: <Cart />
+        },
+        {
+          path: '/success',
+          element: <Success />
+        },
+        {
+          path: '/cancel',
+          element: <Cancel />
         }
       ],
     }

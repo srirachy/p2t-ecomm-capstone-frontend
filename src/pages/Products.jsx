@@ -10,11 +10,12 @@ import '../styles/Products.css';
 const Products = () => {
   const {categories} = categorySlice();
   const [products, setProducts] = useState([]);
+  const [refresh, setRefresh] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const { getAccessTokenSilently, user } = useAuth0();
   const { isAdmin } = adminSlice();
-  
+
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -30,7 +31,7 @@ const Products = () => {
       }
     };
     fetchProducts();
-  }, [products]);
+  }, [refresh]);
 
   const deleteProduct = async (pid) => {
     if(isAdmin){
@@ -43,6 +44,7 @@ const Products = () => {
         });
 
         if (res.ok) {
+          setRefresh(prev => !prev);
           alert(`Product deleted: ${pid}`);
         }
       } catch ( error ) {
