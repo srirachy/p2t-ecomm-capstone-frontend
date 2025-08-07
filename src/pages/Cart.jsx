@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
+import { loadStripe } from '@stripe/stripe-js';
 import cartSlice from "../store"
 
 const Cart = () => {
@@ -24,6 +25,32 @@ const Cart = () => {
         isAuthenticated && fetchCart();
     }, []);
 
+    const handleCheckout = async () => {
+        const stripe = await loadStripe(import.meta.env.VITE_STRIPE_PK);
+        const token = await getAccessTokenSilently();
+        const epCheckout = import.meta.env.VITE_BACKEND_URI + `payment/create-checkout-session`;
+        const epClear = import.meta.env.VITE_BACKEND_URI + `cart/clear`;
+
+        const res = await fetch(epCheckout, {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify({ 
+                items: cart.items,
+             }),
+        });
+
+        const session = await res.json();
+
+        const result = await stripe.redirectToCheckout({ sessionId: session.id });
+
+        if (result.error) {
+            console.error(result.error);
+        }
+    };
+
   
     return (
     <>
@@ -37,7 +64,7 @@ const Cart = () => {
                         </li>
                     ))}
                 </ul>
-                <button>
+                <button onClick={() => handleCheckout()}>
                     Checkout
                 </button>
             </>
