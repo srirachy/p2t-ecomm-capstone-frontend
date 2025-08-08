@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { useAuth0 } from '@auth0/auth0-react';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import adminSlice from '../store';

@@ -1,7 +1,7 @@
 import cartSlice from '../store';
 import '../styles/ProductCard.css';
 
-// import { Link } from 'react-router-dom';
+// import { Link } from 'react-router';
 
 const ProductCard = ({id, name, slug, price, categories, images, shortDesc, longDesc, deleteProduct, isAdmin, addToCart}) => {
   

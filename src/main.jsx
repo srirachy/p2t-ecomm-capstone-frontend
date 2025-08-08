@@ -4,7 +4,7 @@ import { Auth0Provider } from '@auth0/auth0-react';
 import {
   createBrowserRouter,
   RouterProvider,
-} from 'react-router-dom';
+} from 'react-router';
 import App from './App.jsx';
 import Error from './pages/Error';
 import Home from './pages/Home'
