@@ -9,14 +9,24 @@ const SuccessPage = () => {
   const [searchParams] = useSearchParams();
   const effectRan = useRef(false);
 
-
   useEffect(() => {
-    const doThis = async () => {
+    const createOrder = async () => {
+      const sessionId = searchParams.get('session_id');
+      const ep = import.meta.env.VITE_BACKEND_URI + `order/${sessionId}`;
+      const res = await fetch(ep, {
+        method: 'POST',
+        body: {
+          sessionId,
+        },
+      });
+
+      if (res.ok) {
+        alert(`Order completed!`);
+      }
+    }
+    const clearCart = async () => {
         // add to order
-        const sessionId = searchParams.get('session_id');
         const userId = searchParams.get('user_id');
-        console.log(sessionId)
-        console.log(userId);
 
         // clear cart
         const ep = import.meta.env.VITE_BACKEND_URI + `cart/clear/${userId}`;
@@ -24,11 +34,12 @@ const SuccessPage = () => {
           method: 'DELETE',
         });
         if (res.ok) {
-          alert(`Cart cleared: ${userId}`);
+          console.log(`Cart cleared: ${userId}`);
         }
     }
     if (effectRan.current || import.meta.env.VITE_NODE_ENV !== "development") {
-        doThis()
+        createOrder(); // create order
+        clearCart(); // this is effectively clearCart
     }
     
     return () => effectRan.current = true;

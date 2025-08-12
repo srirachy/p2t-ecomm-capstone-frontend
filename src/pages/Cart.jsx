@@ -29,7 +29,6 @@ const Cart = () => {
         const stripe = await loadStripe(import.meta.env.VITE_STRIPE_PK);
         const token = await getAccessTokenSilently();
         const epCheckout = import.meta.env.VITE_BACKEND_URI + `payment/create-checkout-session`;
-        const epClear = import.meta.env.VITE_BACKEND_URI + `cart/clear`;
 
         const res = await fetch(epCheckout, {
             method: 'POST',
