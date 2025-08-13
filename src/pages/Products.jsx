@@ -106,6 +106,7 @@ const Products = () => {
             longDesc={product.longDescription}
             deleteProduct={deleteProduct}
             isAdmin={isAdmin}
+            user={user}
             addToCart={addToCart}
           />
         ))}

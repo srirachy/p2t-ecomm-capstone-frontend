@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router';
 import { useAuth0 } from '@auth0/auth0-react';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import { ROUTES } from '../constants/index.js';
 import adminSlice from '../store';
 import LoginButton from './LoginButton';
 import LogoutButton from './LogoutButton';
@@ -47,7 +48,7 @@ const NavBar = () => {
   return (
     <nav>
       <div id='logo-container'>
-        <Link to='/'><img id='logo' src={Logo} alt='Image of Logo' /></Link>
+        <Link to={ROUTES.HOME}><img id='logo' src={Logo} alt='Image of Logo' /></Link>
       </div>
       {isMobile ? 
         <>
@@ -55,23 +56,30 @@ const NavBar = () => {
             {isOpen ? <FaTimes size={24} />: <FaBars size={24} /> }
           </button>
           <div className={`ham-menu ${isMobile ? (isOpen ? "active" : "hidden") : ""}`}>
-            <Link to='/products' className='dropdown-item' onClick={toggleMenu}>Products</Link>
-            <Link to='/cart' className='dropdown-item' onClick={toggleMenu}>Cart</Link>
+            <Link to={ROUTES.PRODUCTS} className='dropdown-item' onClick={toggleMenu}>Products</Link>
+            {
+              isAuthenticated &&
+              <>
+                <Link to={ROUTES.CART} className='dropdown-item' onClick={toggleMenu}>Cart</Link>
+                <Link to={ROUTES.ORDERS_USER} className='dropdown-item' onClick={toggleMenu}>Orders</Link>
+              </>
+            }
             {isAdmin && (
               <>
                 <Link
-                  to='/admin/products/create'
+                  to={ROUTES.ADMIN.PRODUCTS_CREATE}
                   className='dropdown-item'
                   onClick={toggleMenu}
                 >
                   Add Product
                 </Link>
-                {/* <Link
-                  to='/admin/orders/view'
+                <Link
+                  to={ROUTES.ADMIN.ORDERS}
                   className='dropdown-item'
+                  onClick={toggleMenu}
                 >
-                  View Order
-                </Link> */}
+                  View Orders
+                </Link>
               </>
             )}
            
@@ -83,15 +91,28 @@ const NavBar = () => {
         :
         <>
           <div id='link-container'>
-            <Link to='/products'>Products</Link>
-            {isAuthenticated && <Link to='/cart'>Cart</Link>}
+            <Link to={ROUTES.PRODUCTS}>Products</Link>
+            {
+              isAuthenticated && 
+              <>
+                <Link to={ROUTES.CART}>Cart</Link>
+                <Link to={ROUTES.ORDERS_USER}>Orders</Link>
+              </>
+            }
             {isAdmin && (
               <>
                 {!isMobile 
                   ? 
-                  (<Link to="/admin/products/create">
-                    Add Product
-                  </Link>) 
+                  (
+                    <>
+                      <Link to={ROUTES.ADMIN.PRODUCTS_CREATE}>
+                        Add Product
+                      </Link>
+                      <Link to={ROUTES.ADMIN.ORDERS}>
+                        View Orders
+                      </Link>
+                    </>
+                  ) 
                   : 
                   (
                     <div id='dropdown-container'>
@@ -108,11 +129,18 @@ const NavBar = () => {
                       {isDropdownOpen && (
                         <div id='dropdown-menu'>
                           <Link
-                            to='/admin/products/create'
+                            to={ROUTES.ADMIN.PRODUCTS_CREATE}
                             className='dropdown-item'
                             onClick={() => setIsDropdownOpen(false)}
                           >
                             Add Product
+                          </Link>
+                          <Link
+                            to={ROUTES.ADMIN.ORDERS}
+                            className='dropdown-item'
+                            onClick={() => setIsDropdownOpen(false)}
+                          >
+                            View Orders
                           </Link>
                         </div>
                       )}

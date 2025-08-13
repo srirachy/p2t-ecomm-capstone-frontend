@@ -5,6 +5,8 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from 'react-router';
+import { protectedRoute } from './utils/index.jsx';
+import { ROUTES } from './constants/index.js';
 import App from './App.jsx';
 import Error from './pages/Error';
 import Home from './pages/Home'
@@ -13,39 +15,31 @@ import ProductAdmin from './pages/ProductAdmin.jsx';
 import Cart from './pages/Cart.jsx';
 import Success from './pages/Success.jsx';
 import Cancel from './pages/Cancel.jsx';
+import Orders from './pages/Orders.jsx';
+import OrderAdmin from './pages/OrderAdmin.jsx';
 import './styles/index.css';
 
 const router = createBrowserRouter(
   [
     {
-      path: '/',
+      path: ROUTES.HOME,
       element: <App />,
       errorElement: <Error />,
       children: [
         {
-          path: '/',
+          path: ROUTES.HOME,
           element: <Home />
         },
         {
-          path: '/products',
+          path: ROUTES.PRODUCTS,
           element: <Products />
         },
-        {
-          path: '/admin/products/create',
-          element: <ProductAdmin />
-        },
-        {
-          path: '/cart',
-          element: <Cart />
-        },
-        {
-          path: '/success',
-          element: <Success />
-        },
-        {
-          path: '/cancel',
-          element: <Cancel />
-        }
+        protectedRoute(ROUTES.CART, <Cart />),
+        protectedRoute(ROUTES.SUCCESS, <Success />),
+        protectedRoute(ROUTES.CANCEL, <Cancel />),
+        protectedRoute(ROUTES.ORDERS_USER, <Orders />),
+        protectedRoute(ROUTES.ADMIN.PRODUCTS_CREATE, <ProductAdmin />, 'admin'),
+        protectedRoute(ROUTES.ADMIN.ORDERS, <OrderAdmin />, 'admin')
       ],
     }
   ]

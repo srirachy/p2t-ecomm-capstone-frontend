@@ -1,4 +1,4 @@
-import { useState} from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useAuth0 } from '@auth0/auth0-react';
 import { nanoid } from 'nanoid';
@@ -173,4 +173,4 @@ const ProductAdmin = () => {
     )
 }
 
-export default ProductAdmin
+export default ProductAdmin;
