@@ -1,5 +1,5 @@
 #cta-section {
-    width: 100vw;
+    width: 100%;
     min-height: 1vh;
     background-image: url('../assets/cta-img.png');
     background-size: cover;
@@ -19,6 +19,7 @@
     width: 60%;
     margin: 6px auto;
     min-height: 100%;
+    border-radius: 12px;
     background-color: var(--speed-of-light);
 }
 

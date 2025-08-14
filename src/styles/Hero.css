@@ -1,5 +1,5 @@
 #hero-section {
-    width: 100vw;
+    width: 100%;
     min-height: 1vh;
     display: flex;
     flex-direction: column;
@@ -23,4 +23,5 @@
 
 #hero-img-container > img {
     width: 100%;
+    border-radius: 12px;
 }

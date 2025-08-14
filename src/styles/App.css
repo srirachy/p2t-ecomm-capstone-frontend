@@ -1,11 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap');
 
 #root {
-  min-height: 100vh;
+  height: 100%;
+  width: 100%;
 }
 
 main {
   height: 100%;
+  width: 100%;
+  margin: 0 auto;
 }
 
 h1 {
