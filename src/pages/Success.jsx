@@ -1,34 +1,41 @@
-import { useEffect, useRef } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import { useNavigate, useSearchParams } from 'react-router';
 import { FaCheckCircle } from 'react-icons/fa';
 import '../styles/PaymentPages.css'
-
+import { BACKEND_ROUTES } from '../constants';
+import { useAuth0 } from '@auth0/auth0-react';
+import { createDataNoContentType, deleteData } from '../api/services';
 
 const SuccessPage = () => {
   const navigate = useNavigate();
+  const [orderNum, setOrderNum] = useState('');
   const [searchParams] = useSearchParams();
   const effectRan = useRef(false);
-
+  const { getAccessTokenSilently } = useAuth0();
 
   useEffect(() => {
-    const doThis = async () => {
-        // add to order
-        const sessionId = searchParams.get('session_id');
-        const userId = searchParams.get('user_id');
-        console.log(sessionId)
-        console.log(userId);
+    const clearCart = async () => {
+      const token = await getAccessTokenSilently();
+      const res = await deleteData(`${BACKEND_ROUTES.CART}/clear`, token);
 
-        // clear cart
-        const ep = import.meta.env.VITE_BACKEND_URI + `cart/clear/${userId}`;
-        const res = await fetch(ep, {
-          method: 'DELETE',
-        });
-        if (res.ok) {
-          alert(`Cart cleared: ${userId}`);
-        }
-    }
+      if (res) {
+        console.log(res.message);
+      }
+    };
+    const createOrder = async () => {
+      const sessionId = searchParams.get('session_id');
+      const token = await getAccessTokenSilently();
+      const body = { sessionId };
+      const res = await createDataNoContentType(`${BACKEND_ROUTES.ORDER}/create-order/${sessionId}`, token, body);
+
+      if (res) {
+        setOrderNum(res.orderNumber);
+        alert(`Order completed!`);
+        clearCart();
+      }
+    };
     if (effectRan.current || import.meta.env.VITE_NODE_ENV !== "development") {
-        doThis()
+        createOrder();
     }
     
     return () => effectRan.current = true;
@@ -41,9 +48,11 @@ const SuccessPage = () => {
       <p className="payment-message">
         Thank you for your purchase. Your order has been received and is being processed.
       </p>
-      <p className="payment-message">
-        A confirmation email has been sent to your registered email address.
-      </p>
+      {orderNum &&
+        <p className="payment-message">
+          Your order number is: {orderNum}
+        </p>
+      }
       <div className="payment-buttons">
         <button className="btn btn-primary" onClick={() => navigate('/orders')}>
           View Your Orders

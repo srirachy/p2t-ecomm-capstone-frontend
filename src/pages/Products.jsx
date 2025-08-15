@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { nanoid } from 'nanoid';
 import { useAuth0 } from '@auth0/auth0-react';
-import { fetchData } from '../api/services';
+import { readData } from '../api/services';
+import { BACKEND_ROUTES } from '../constants';
 import adminSlice from '../store';
 import categorySlice from '../store';
 import ProductCard from '../components/ProductCard';
@@ -19,8 +20,7 @@ const Products = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const ep = 'products';
-        const data = await fetchData(ep);
+        const data = await readData(BACKEND_ROUTES.PRODUCTS);
         if (data) {
           setProducts(data);
         }
@@ -37,8 +37,7 @@ const Products = () => {
     if(isAdmin){
       const token = await getAccessTokenSilently();
       try {
-        const ep = import.meta.env.VITE_BACKEND_URI + `products/${pid}`;
-        const res = await fetch(ep, {
+        const res = await fetch(`${import.meta.env.VITE_BACKEND_URI}/${BACKEND_ROUTES.PRODUCTS}/${pid}`, {
           method: 'DELETE',
           headers: { Authorization: `Bearer ${token}`},
         });
@@ -60,8 +59,7 @@ const Products = () => {
     if (user) {
       const token = await getAccessTokenSilently();
       try {
-        const ep = import.meta.env.VITE_BACKEND_URI + `cart/add`;
-        const res = await fetch(ep, {
+        const res = await fetch(`${import.meta.env.VITE_BACKEND_URI}/${BACKEND_ROUTES.CART}/add`, {
           method: 'POST',
           body: JSON.stringify({
             productId,
@@ -106,6 +104,7 @@ const Products = () => {
             longDesc={product.longDescription}
             deleteProduct={deleteProduct}
             isAdmin={isAdmin}
+            user={user}
             addToCart={addToCart}
           />
         ))}

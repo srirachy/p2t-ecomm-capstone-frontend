@@ -1,9 +1,8 @@
-import cartSlice from '../store';
 import '../styles/ProductCard.css';
 
-// import { Link } from 'react-router-dom';
+// import { Link } from 'react-router';
 
-const ProductCard = ({id, name, slug, price, categories, images, shortDesc, longDesc, deleteProduct, isAdmin, addToCart}) => {
+const ProductCard = ({id, name, slug, price, categories, images, shortDesc, longDesc, deleteProduct, isAdmin, user, addToCart}) => {
   
   return (
     <div className='product-card'>
@@ -23,7 +22,9 @@ const ProductCard = ({id, name, slug, price, categories, images, shortDesc, long
       </div>
       {/* </Link> */}
       <div>
-        <button onClick={() => addToCart(id, 1)}>Add to Cart</button>
+        { user &&
+          <button onClick={() => addToCart(id, 1)}>Add to Cart</button>
+        }
         { isAdmin &&
           <div>
             {/* <button>Edit</button> */}

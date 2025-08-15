@@ -1,7 +1,7 @@
 footer {
     display: flex;
     flex-direction: column;
-    width: 100vw;
+    width: 100%;
     min-height: 1vh;
     padding: 6px 0px;
     background-color: var(--speed-of-light);
