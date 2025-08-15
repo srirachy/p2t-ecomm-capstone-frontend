@@ -36,6 +36,10 @@ const router = createBrowserRouter(
           element: <Products />
         },
         {
+          path: '/payment/stripe-callback',
+          element: null
+        },
+        {
           path: '*',
           element: <NotFound />
         },
