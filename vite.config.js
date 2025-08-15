@@ -8,11 +8,6 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [react()],
-    build: {
-      outDir: 'dist',
-      assetsInlineLimit: 0,
-    },
-    publicDir: 'public',
     server: {
       proxy: {
         '/payment/stripe-callback': {
