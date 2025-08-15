@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { readDataWithHeaders } from "../api/services";
 import { BACKEND_ROUTES } from "../constants";
@@ -13,7 +13,7 @@ const Orders = () => {
         const token = await getAccessTokenSilently();
         const data = await readDataWithHeaders(`${BACKEND_ROUTES.ORDER}/myorders`, token);
         data.length > 0 && setOrders(data);
-        
+
       } catch ( error ) {
         console.error('Error:', error);
       }
@@ -26,7 +26,9 @@ const Orders = () => {
       <div>Orders</div>
       {orders.length > 0 
         ? orders.map((order) => (
-          <p>{order.id}</p>
+          <React.Fragment key={order.id}>
+            <p>{order.id}</p>
+          </React.Fragment>
         ))
         : (
           <>

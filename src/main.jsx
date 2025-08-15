@@ -18,6 +18,7 @@ import Cancel from './pages/Cancel.jsx';
 import Orders from './pages/Orders.jsx';
 import OrderAdmin from './pages/OrderAdmin.jsx';
 import './styles/index.css';
+import NotFound from './pages/NotFound.jsx';
 
 const router = createBrowserRouter(
   [
@@ -33,6 +34,10 @@ const router = createBrowserRouter(
         {
           path: ROUTES.PRODUCTS,
           element: <Products />
+        },
+        {
+          path: '*',
+          element: <NotFound />
         },
         protectedRoute(ROUTES.CART, <Cart />),
         protectedRoute(ROUTES.SUCCESS, <Success />),

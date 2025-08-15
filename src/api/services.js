@@ -19,6 +19,26 @@ export const createData = async (route, tkn, body) => {
     }
 };
 
+export const createDataNoContentType = async (route, tkn, body) => {
+    try{
+        const res = await fetch(`${import.meta.env.VITE_BACKEND_URI}/${route}`, {
+            method: 'POST',
+            headers: { 
+                Authorization: `Bearer ${tkn}`
+            },
+            body
+        });
+        if(!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+        }
+
+        return await res.json();
+    } catch ( error ) {
+        console.error('Error:', error);
+        throw error;
+    }
+};
+
 export const readData = async (route) => {
     try{
         const res = await fetch(`${import.meta.env.VITE_BACKEND_URI}/${route}`);
