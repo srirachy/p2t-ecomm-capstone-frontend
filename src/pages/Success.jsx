@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router';
 import { FaCheckCircle } from 'react-icons/fa';
 import '../styles/PaymentPages.css'
+import { BACKEND_ROUTES } from '../constants';
 
 
 const SuccessPage = () => {
@@ -16,8 +17,7 @@ const SuccessPage = () => {
       const userId = searchParams.get('user_id');
 
       // clear cart
-      const ep = import.meta.env.VITE_BACKEND_URI + `cart/clear/${userId}`;
-      const res = await fetch(ep, {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URI}/${BACKEND_ROUTES.CART}/clear/${userId}`, {
         method: 'DELETE',
       });
       if (res.ok) {
@@ -27,8 +27,7 @@ const SuccessPage = () => {
     const createOrder = async () => {
       const sessionId = searchParams.get('session_id');
       const userId = searchParams.get('user_id');
-      const ep = import.meta.env.VITE_BACKEND_URI + `order/${sessionId}/${userId}`;
-      const res = await fetch(ep, {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URI}/${BACKEND_ROUTES.ORDER}/${sessionId}/${userId}`, {
         method: 'POST',
         body: {
           sessionId,

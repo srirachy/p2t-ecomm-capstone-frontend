@@ -10,3 +10,11 @@ export const ROUTES = {
     ORDERS: '/admin/orders',
   },
 };
+
+export const BACKEND_ROUTES = {
+  USERS: 'users',
+  PRODUCTS: 'products',
+  CART: 'cart',
+  PAYMENT: 'payment',
+  ORDER: 'order'
+}

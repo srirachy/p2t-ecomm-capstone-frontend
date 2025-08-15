@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { loadStripe } from '@stripe/stripe-js';
+import { BACKEND_ROUTES } from "../constants";
 import cartSlice from "../store"
+import { readDataWithHeaders } from '../api/services';
 
 const Cart = () => {
     const { cart, setCart } = cartSlice();
@@ -11,13 +13,8 @@ const Cart = () => {
         const fetchCart = async () => {
             try {
                 const token = await getAccessTokenSilently();
-                
-                const ep = import.meta.env.VITE_BACKEND_URI + `cart`;
-                const res = await fetch(ep, {
-                    headers: { Authorization: `Bearer ${token}`},
-                });
-                const data = await res.json();
-                setCart(data);
+                const data = await readDataWithHeaders(`${BACKEND_ROUTES.CART}`, token);
+                data && setCart(data);
             } catch (error) {
                 console.error('Error:', error);
             }
@@ -28,9 +25,8 @@ const Cart = () => {
     const handleCheckout = async () => {
         const stripe = await loadStripe(import.meta.env.VITE_STRIPE_PK);
         const token = await getAccessTokenSilently();
-        const epCheckout = import.meta.env.VITE_BACKEND_URI + `payment/create-checkout-session`;
 
-        const res = await fetch(epCheckout, {
+        const res = await fetch(`${import.meta.env.VITE_BACKEND_URI}/${BACKEND_ROUTES.PAYMENT}/create-checkout-session`, {
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json',
@@ -42,6 +38,18 @@ const Cart = () => {
         });
 
         const session = await res.json();
+
+        // const stripe = await loadStripe(import.meta.env.VITE_STRIPE_PK);
+        // const token = await getAccessTokenSilently();
+        // const data = JSON.stringify({ items: cart.items });
+
+        // const session = await createData(`${BACKEND_ROUTES.PAYMENT}/create-checkout-session`, token, data);
+
+        // const result = await stripe.redirectToCheckout({ sessionId: session.id });
+
+        // if (result.error) {
+        //     console.error(result.error);
+        // }
 
         const result = await stripe.redirectToCheckout({ sessionId: session.id });
 

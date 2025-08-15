@@ -5,6 +5,7 @@ import { nanoid } from 'nanoid';
 import { slugIt } from '../utils';
 import categorySlice from '../store';
 import '../styles/ProductAdmin.css';
+import { BACKEND_ROUTES } from '../constants';
 
 const ProductAdmin = () => {
     const { categories } = categorySlice();
@@ -50,10 +51,8 @@ const ProductAdmin = () => {
             selectedCategories.forEach(category => {
                 uploadForm.append('categories', category);
             });
-            console.log(uploadForm);
             
-            const ep = 'products';
-            const res = await fetch(import.meta.env.VITE_BACKEND_URI + ep,
+            const res = await fetch(`${import.meta.env.VITE_BACKEND_URI}/${BACKEND_ROUTES.PRODUCTS}`,
                 {
                     method: 'POST',
                     headers: {

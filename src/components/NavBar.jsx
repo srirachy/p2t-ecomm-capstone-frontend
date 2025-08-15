@@ -2,12 +2,13 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router';
 import { useAuth0 } from '@auth0/auth0-react';
 import { FaBars, FaTimes } from 'react-icons/fa';
-import { ROUTES } from '../constants/index.js';
+import { BACKEND_ROUTES, ROUTES } from '../constants/index.js';
 import adminSlice from '../store';
 import LoginButton from './LoginButton';
 import LogoutButton from './LogoutButton';
 import Logo from '../assets/logo.png'
 import '../styles/NavBar.css'
+import { readDataWithHeaders } from '../api/services.js';
 
 const NavBar = () => {
   const { isAuthenticated, getAccessTokenSilently } = useAuth0();
@@ -29,11 +30,9 @@ const NavBar = () => {
     const checkAdminStatus = async () => {
       try {
         const token = await getAccessTokenSilently();
-        const res = await fetch(import.meta.env.VITE_BACKEND_URI + 'users/me', {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        const data = await res.json();
-        setIsAdmin(data.isAdmin);
+        const res = await readDataWithHeaders(`${BACKEND_ROUTES.USERS}/me`, token);
+
+        setIsAdmin(res.isAdmin);
       } catch (error) {
         console.error('Failed to check admin status:', error);
       }
