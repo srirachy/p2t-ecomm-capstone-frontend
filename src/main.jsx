@@ -47,16 +47,16 @@ const router = createBrowserRouter(
         //   path: '/payment/stripe-callback',
         //   element: null
         // },
-        {
-          path: '*',
-          element: <NotFound />
-        },
         protectedRoute(ROUTES.CART, <Cart />),
         // protectedRoute(ROUTES.SUCCESS, <Success />),
         // protectedRoute(ROUTES.CANCEL, <Cancel />),
         protectedRoute(ROUTES.ORDERS_USER, <Orders />),
         protectedRoute(ROUTES.ADMIN.PRODUCTS_CREATE, <ProductAdmin />, 'admin'),
-        protectedRoute(ROUTES.ADMIN.ORDERS, <OrderAdmin />, 'admin')
+        protectedRoute(ROUTES.ADMIN.ORDERS, <OrderAdmin />, 'admin'),
+        {
+          path: '/*',
+          element: <NotFound />
+        },
       ],
     }
   ]
