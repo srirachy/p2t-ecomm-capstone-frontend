@@ -15,11 +15,15 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: var(--errigal-white);
   /* margin: 0 auto; */
 }
 
+section, aside {
+  padding: 4px;
+}
+
 h1 {
-  /* font-size: 3rem; */
   font-size: 1.4rem;
   font-family: "Abril Fatface", serif;
   color: var(--brassy-brass);
@@ -27,28 +31,30 @@ h1 {
 }
 
 h2 {
-  /* font-size: 2rem; */
   font-size: 1rem;
   font-family: "Abril Fatface", serif;
   color: var(--brassy-brass);
+  margin: 0 auto;
 }
 
 h3 {
-  /* font-size: 1.1rem; */
   font-size: 0.9rem;
   font-family: "Abril Fatface", serif;
   color: var(--brassy-brass);
+  margin: 0 auto;
 }
 
 p {
-  /* font-size: 1rem; */
   font-size: 0.8rem;
   font-family: "Instrument Sans";
   color: var(--swamp-fox);
+  margin: 2px auto;
 }
 
 button {
   background-color: var(--swamp-fox);
+  margin: 2px auto;
+  cursor: pointer;
 }
 
 span {
@@ -66,26 +72,42 @@ span {
     font-size: 2rem;
 }
 
-@media (min-width: 576px) {
-
-} /* landscape phones */
+@media (min-width: 576px) {} /* landscape phones */
 
 @media (min-width: 768px) {
-
+  section, aside {
+    padding: 8px;
+  }
 } /* tablets */
 
 @media (min-width: 992px) {
   main {
     max-width: 80%;
     margin: 0 auto;
-    background-color: var(--errigal-white);
+    /* background-color: var(--errigal-white); */
+  }
+
+  section, aside {
+    padding: 12px;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+  }
+
+  p, span {
+    font-size: 1rem;
   }
 } /* desktops */
 
-@media (min-width: 1200px) {
+@media (min-width: 1200px) {} /* large desktops */
 
-} /* large desktops */
-
-@media (min-width: 1400px) {
-
-} /* larger desktops */
+@media (min-width: 1400px) {} /* larger desktops */

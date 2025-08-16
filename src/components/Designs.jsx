@@ -11,7 +11,9 @@ const Designs = () => {
   return (
     <section id='design-section'>
       <h2>Ace is fueling creativity</h2>
-      {designArr.map(({desImg, desHeader, desText}) => <Card key={nanoid()} cardImg={desImg} cardHeader={desHeader} cardText={desText} />)}
+      <div id='design-card-section'>
+        {designArr.map(({desImg, desHeader, desText}) => <Card key={nanoid()} cardImg={desImg} cardHeader={desHeader} cardText={desText} />)}
+      </div>
     </section>
   )
 }

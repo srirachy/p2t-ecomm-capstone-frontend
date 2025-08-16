@@ -100,27 +100,15 @@ const NavBar = () => {
                 </>
               }
               {isAdmin && (
-                <>
-                  {!isMobile 
-                    ? 
-                    (
-                      <>
-                        <Link to={ROUTES.ADMIN.PRODUCTS_CREATE}>
-                          Add Product
-                        </Link>
-                        <Link to={ROUTES.ADMIN.ORDERS}>
-                          View Orders
-                        </Link>
-                      </>
-                    ) 
-                    : 
-                    (
+                
                       <div id='dropdown-container'>
                         <button
                           id='dropdown-toggle'
                           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                         >
-                          Admin
+                          <span>
+                            Admin
+                          </span>
                           <span id={`dropdown-arrow${isDropdownOpen ? '-open' : ''}`}>
                             ▼
                           </span>
@@ -133,21 +121,25 @@ const NavBar = () => {
                               className='dropdown-item'
                               onClick={() => setIsDropdownOpen(false)}
                             >
-                              Add Product
+                              <span>
+                                Add Product
+                              </span>
                             </Link>
                             <Link
                               to={ROUTES.ADMIN.ORDERS}
                               className='dropdown-item'
                               onClick={() => setIsDropdownOpen(false)}
                             >
-                              View Orders
+                              <span>
+                                View Orders
+                              </span>
                             </Link>
                           </div>
                         )}
                       </div>
                     )}
-                </>
-              )}
+
+              
             </div>
             <div id='auth-container'>
               {isAuthenticated ? <LogoutButton isMobile={isMobile} /> : <LoginButton isMobile={isMobile} />}

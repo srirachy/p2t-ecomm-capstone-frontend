@@ -7,7 +7,7 @@
 }
 
 .card-container > figure {
-    width: 260px;
+    width: 50%;
     margin: 6px auto;
 }
 
@@ -17,5 +17,20 @@
 }
 
 .card-text {
-    width: 260px;
+    width: 60%;
 }
+
+@media (min-width: 768px) {
+    .card-container {
+        width: 33%;
+    }
+
+    .card-container > figure {
+        width: 65%;
+        /* margin: 6px auto; */
+    }
+
+    .card-text {
+        width: 75%;
+    }
+} /* tablets */

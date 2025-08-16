@@ -8,11 +8,13 @@ import youtube from '../assets/youtube_logo.png'
 const Socials = () => {
   return (
     <aside id='socials'>
-      <figure><img src={octocat} alt='GitHub Octocat Logo' /></figure>
-      <figure><img src={instagram} alt='Instagram Logo' /></figure>
-      <figure><img src={linkedin} alt='LinkedIn Logo' /></figure>
-      <figure><img src={twitch} alt='Twitch Logo' /></figure>
-      <figure><img src={youtube} alt='YouTube Logo' /></figure>
+      <div id='socials-container'>
+        <figure><img src={octocat} alt='GitHub Octocat Logo' /></figure>
+        <figure><img src={instagram} alt='Instagram Logo' /></figure>
+        <figure><img src={linkedin} alt='LinkedIn Logo' /></figure>
+        <figure><img src={twitch} alt='Twitch Logo' /></figure>
+        <figure><img src={youtube} alt='YouTube Logo' /></figure>
+      </div>
     </aside>
   )
 }

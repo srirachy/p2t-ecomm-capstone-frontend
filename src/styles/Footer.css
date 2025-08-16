@@ -43,9 +43,15 @@ footer {
     color: var(--swamp-fox);
 }
 
+#footer-link-container > li:hover {
+    text-decoration: underline;
+}
+
 
 @media (min-width: 576px) {
-
+    #footer-link-container > li {
+        font-size: 0.8rem;
+    }
 } /* landscape phones */
 
 @media (min-width: 768px) {
@@ -67,19 +73,10 @@ footer {
         align-items: flex-end;
     }
 
-    #footer-link-container > li {
-        font-size: 0.8rem;
-    }
 } /* tablets */
 
 @media (min-width: 992px) {
-
+    #footer-link-container > li {
+        font-size: 1rem;
+    }
 } /* desktops */
-
-@media (min-width: 1200px) {
-
-} /* large desktops */
-
-@media (min-width: 1400px) {
-
-} /* larger desktops */

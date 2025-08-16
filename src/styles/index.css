@@ -15,27 +15,25 @@ body {
   --swamp-fox: #b59b67;
   --midnight-ocean: #0b254b;
   --chesty-bond: #4e6ea0;
+  --sm: 576px;
+  --md: 768px;
+  --lg: 992px;
+  --xl: 1200px;
+  --xxl: 1400px;
 }
 
 
-@media (min-width: 576px) {
+@media (min-width: 576px) {} /* landscape phones */
 
-} /* landscape phones */
-
-@media (min-width: 768px) {
-
-} /* tablets */
+@media (min-width: 768px) {} /* tablets */
 
 @media (min-width: 992px) {
   body {
-    background-color: var(--brassy-brass);
+    background-image: url('../assets/bkgd-plants.webp');
+    background-size: cover;
   }
 } /* desktops */
 
-@media (min-width: 1200px) {
+@media (min-width: 1200px) {} /* large desktops */
 
-} /* large desktops */
-
-@media (min-width: 1400px) {
-
-} /* larger desktops */
+@media (min-width: 1400px) {} /* larger desktops */

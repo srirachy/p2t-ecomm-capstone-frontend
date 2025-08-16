@@ -14,8 +14,25 @@
 
 #feature-img-container > img {
     width: 100%;
+    border-radius: 12px;
 }
 
 #features-container {
     width: 260px;
 }
+
+@media (min-width: 768px) {
+    #feature-section {
+        flex-direction: row;
+    }
+    #feature-img-container, #features-container {
+        width: 50%;
+        padding: 20px;
+    }
+} /* tablets */
+
+@media (min-width: 992px) {
+    #feature-img-container, #features-container {
+        padding: 80px;
+    }
+} /* desktops */

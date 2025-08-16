@@ -1,20 +1,34 @@
 #socials {
+    width: 100%;
+    min-height: 1vh;
+    background-color: var(--speed-of-light);
+    /* padding: 0; */
+}
+
+#socials-container {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
-    background-color: var(--speed-of-light);
-    width: 100%;
-    min-height: 1vh;
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
 }
 
-#socials > figure {
+#socials-container > figure {
     margin: 6px auto;
 }
 
-#socials > figure > img {
-    width: 1rem;
-    height: 1rem;
+#socials-container > figure > img {
+    width: 1.4rem;
+    height: 1.4rem;
     cursor: pointer;
 }
+
+@media (min-width: 992px) {
+    #socials-container > figure > img {
+        width: 3rem;
+        height: 3rem;
+    }
+} /* desktops */
