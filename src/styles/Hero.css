@@ -18,7 +18,7 @@
 #hero-img-container {
     /* padding: 0; */
     margin: 6px auto;
-    width: 360px;
+    width: 80%;
 }
 
 #hero-img-container > img {
