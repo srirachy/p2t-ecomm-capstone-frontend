@@ -14,7 +14,7 @@ const LogoutButton = ({isMobile, toggleMenu}) => {
                 Log Out
             </span>
             :
-            <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
+            <button className='auth-button' onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
                 <span>Log Out</span>
             </button>
     );

@@ -111,6 +111,14 @@ nav {
     padding: 20px 40px;
 }
 
+.auth-button > span {
+    color: var(--errigal-white)
+}
+
+.auth-button:hover {
+    background-color: var(--brassy-brass);
+}
+
 @media (min-width: 768px) {
     #nav-container {
         width: 80%;
@@ -152,7 +160,6 @@ nav {
     }
 
     #dropdown-toggle {
-        background: none;
         border-color: var(--swamp-fox);
     }
 
@@ -172,7 +179,7 @@ nav {
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 20px;
+        padding: 4px;
         text-decoration: none;
         text-align: center;
     }

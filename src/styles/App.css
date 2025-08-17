@@ -6,6 +6,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
 main {
@@ -55,6 +56,16 @@ button {
   background-color: var(--swamp-fox);
   margin: 2px auto;
   cursor: pointer;
+  border-radius: 6px;
+  border: 1px solid var(--brassy-brass);
+}
+
+button:hover {
+  background-color: var(--brassy-brass);
+}
+
+button > span {
+  color: var(--errigal-white);
 }
 
 span {

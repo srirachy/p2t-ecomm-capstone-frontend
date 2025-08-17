@@ -45,6 +45,7 @@ footer {
 
 #footer-link-container > li:hover {
     text-decoration: underline;
+    cursor: pointer;
 }
 
 

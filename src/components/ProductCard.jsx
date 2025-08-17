@@ -2,37 +2,28 @@ import '../styles/ProductCard.css';
 
 // import { Link } from 'react-router';
 
-const ProductCard = ({id, name, slug, price, categories, images, shortDesc, longDesc, deleteProduct, isAdmin, user, addToCart}) => {
+const ProductCard = ({id, name, price, images, longDescription: longDesc, deleteProduct, isAdmin, user, addToCart}) => {
   
   return (
     <div className='product-card'>
-      {/* <Link 
-        to={`/products/${slug}`}
-        slug={slug}
-      > */}
-        {/* carousel images eventually */}
-      <div>
+      <div className='product-detail-container'>
         <figure>
           <img src={images[0].url} alt={images[0].altText} />
         </figure>
-        <p>{name}</p>
-        <p>{price}</p>
-        <p>{categories}</p>
-        <p>{shortDesc}</p>
+        <div className='product-text-container'>
+          <p>Card Name: {name}</p>
+          <p>Price: ${price}</p>
+          <p>Description: {longDesc ? longDesc : 'No description...'}</p>
+        </div>
       </div>
-      {/* </Link> */}
-      <div>
+      <div className='product-button-container'>
         { user &&
           <button onClick={() => addToCart(id, 1)}>Add to Cart</button>
         }
         { isAdmin &&
-          <div>
-            {/* <button>Edit</button> */}
-            <button onClick={() => deleteProduct(id)}>Delete</button>
-          </div>
+          <button id='delete-product-btn' onClick={() => deleteProduct(id)}>Delete</button>
         }
       </div>
-      
     </div>
   )
 }

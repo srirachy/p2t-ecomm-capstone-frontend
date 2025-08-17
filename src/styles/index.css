@@ -15,13 +15,14 @@ body {
   --swamp-fox: #b59b67;
   --midnight-ocean: #0b254b;
   --chesty-bond: #4e6ea0;
+  --pearly-purple: #b56795;
+  --antique-fuschia: #8b667b;
   --sm: 576px;
   --md: 768px;
   --lg: 992px;
   --xl: 1200px;
   --xxl: 1400px;
 }
-
 
 @media (min-width: 576px) {} /* landscape phones */
 

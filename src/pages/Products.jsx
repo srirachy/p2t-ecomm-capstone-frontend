@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { nanoid } from 'nanoid';
 import { useAuth0 } from '@auth0/auth0-react';
 import { readData } from '../api/services';
 import { BACKEND_ROUTES } from '../constants';
@@ -9,12 +8,13 @@ import ProductCard from '../components/ProductCard';
 import '../styles/Products.css';
 
 const Products = () => {
-  const {categories} = categorySlice();
   const [products, setProducts] = useState([]);
   const [refresh, setRefresh] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [activeCategory, setActiveCategory] = useState(null);
   const [error, setError] = useState('');
   const { getAccessTokenSilently, user } = useAuth0();
+  const { categories } = categorySlice();
   const { isAdmin } = adminSlice();
 
   useEffect(() => {
@@ -78,6 +78,7 @@ const Products = () => {
     }
   }
 
+  const filteredProducts = activeCategory ? products?.filter(product => product.categories.includes(activeCategory)) : products;
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
@@ -86,28 +87,40 @@ const Products = () => {
     <section id='product-page'>
       <h1>Products</h1>
       <div id='product-filter'>
+        <p
+          className={!activeCategory ? 'active' : ''}
+          onClick={() => setActiveCategory(null)}
+        >
+          All
+        </p>
         {categories?.map((catItem) => (
-          <p key={nanoid()}>{catItem}</p>
+          <p 
+            key={catItem}
+            className={activeCategory === catItem ? 'active' : ''}
+            onClick={() => setActiveCategory(catItem)}
+          >
+            {catItem}
+          </p>
         ))}
       </div>
       <div id='product-container'>
-        {products?.map((product) => (
-          <ProductCard 
-            key={product._id}
-            id={product._id}
-            name={product.name} 
-            slug={product.slug}
-            price={product.price}
-            categories={product.categories}
-            images={product.images}
-            shortDesc={product.shortDescription}
-            longDesc={product.longDescription}
-            deleteProduct={deleteProduct}
-            isAdmin={isAdmin}
-            user={user}
-            addToCart={addToCart}
-          />
-        ))}
+        {
+          filteredProducts.length > 0 
+          ?
+            filteredProducts.map((product) => (
+              <ProductCard
+                key={product._id}
+                {...product}
+                id={product._id}
+                deleteProduct={deleteProduct}
+                isAdmin={isAdmin}
+                user={user}
+                addToCart={addToCart}
+              />
+            ))
+          : 
+            <h3>Currently no products with category: {activeCategory}</h3>
+        }
       </div>
     </section>
   )
