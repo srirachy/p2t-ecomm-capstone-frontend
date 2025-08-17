@@ -159,10 +159,6 @@ nav {
         animation: spinRight 0.4s ease forwards;
     }
 
-    #dropdown-toggle {
-        border-color: var(--swamp-fox);
-    }
-
     #dropdown-menu {
         position: absolute;
         top: 100%;

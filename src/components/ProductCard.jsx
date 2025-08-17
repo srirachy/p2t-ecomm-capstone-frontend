@@ -12,7 +12,7 @@ const ProductCard = ({id, name, price, images, longDescription: longDesc, delete
         </figure>
         <div className='product-text-container'>
           <p>Card Name: {name}</p>
-          <p>Price: ${price}</p>
+          <p>Price: ${price.toFixed(2)}</p>
           <p>Description: {longDesc ? longDesc : 'No description...'}</p>
         </div>
       </div>

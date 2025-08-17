@@ -3,8 +3,9 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { loadStripe } from '@stripe/stripe-js';
 import { createData, readDataWithHeaders } from '../api/services';
 import { BACKEND_ROUTES } from "../constants";
-import '../styles/Cart.css';
+import { FaTimes } from 'react-icons/fa';
 import cartSlice from "../store"
+import '../styles/Cart.css';
 
 const Cart = () => {
     const { cart, setCart } = cartSlice();
@@ -16,7 +17,6 @@ const Cart = () => {
                 const token = await getAccessTokenSilently();
                 const data = await readDataWithHeaders(`${BACKEND_ROUTES.CART}`, token);
                 data && setCart(data);
-                console.log(data);
             } catch (error) {
                 console.error('Error:', error);
             }
@@ -38,10 +38,14 @@ const Cart = () => {
         }
     };
 
+    // To-do: Add logic for quantity control and remove button
+    const updateQuantity = async (id, quantity) => {};
+
+    const removeFromCart = async (id) => {};
   
     return (
     <>
-        <h2>Cart</h2>
+        <h1>Cart</h1>
         {cart?.items?.length ? (
             <>
                 <ul className="cart-items">
@@ -55,7 +59,6 @@ const Cart = () => {
                         
                         <h3 className="cart-item-name">{item.product.name}</h3>
                         
-                        {/* Quantity Controls */}
                         <div className="cart-item-quantity">
                         <button onClick={() => updateQuantity(item.product._id, item.quantity - 1)}>
                             {`-`}
@@ -66,30 +69,26 @@ const Cart = () => {
                         </button>
                         </div>
                         
-                        {/* Price */}
                         <p className="cart-item-price">
                             ${item.product.price.toFixed(2)}
                         </p>
                         
-                        {/* Total (Price × Quantity) */}
                         <p className="cart-item-total">
                             ${(item.product.price * item.quantity).toFixed(2)}
                         </p>
                         
-                        {/* Remove Button */}
                         <button 
                             onClick={() => removeFromCart(item.product._id)}
                             className="cart-item-remove"
                         >
-                            {`×`}
+                            <FaTimes size={12} />
                         </button>
                     </li>
                     ))}
                 </ul>
                 
-                {/* Grand Total */}
                 <div className="cart-total">
-                    <strong>Total:</strong> $
+                    <strong>Cart Total:</strong> $
                     {cart.items
                     .reduce((sum, item) => sum + item.product.price * item.quantity, 0)
                     .toFixed(2)}

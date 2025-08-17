@@ -46,12 +46,16 @@
 }
 
 .cart-item-remove {
-  background: none;
-  border: none;
-  color: #ff4444;
-  font-size: 1.2rem;
-  cursor: pointer;
-  align-self: flex-start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--pearly-purple);
+  color: var(--errigal-white);
+  padding: 4px;
+}
+
+.cart-item-remove:hover {
+  background-color: var(--antique-fuschia);
 }
 
 .cart-total {
