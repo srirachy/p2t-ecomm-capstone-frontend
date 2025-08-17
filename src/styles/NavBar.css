@@ -153,11 +153,12 @@ nav {
         animation: spinLeft 0.4s ease forwards;
     }
 
-
     #dropdown-arrow-open {
         display: inline-block;
         animation: spinRight 0.4s ease forwards;
     }
+
+    /* #dropdown-toggle {} */
 
     #dropdown-menu {
         position: absolute;
