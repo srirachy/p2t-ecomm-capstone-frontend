@@ -2,9 +2,6 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 100vw;
-  min-height: 100vh;
-  overflow-x: hidden;
 }
 
 :root {
@@ -24,17 +21,9 @@ body {
   --xxl: 1400px;
 }
 
-@media (min-width: 576px) {} /* landscape phones */
-
-@media (min-width: 768px) {} /* tablets */
-
 @media (min-width: 992px) {
   body {
     background-image: url('../assets/bkgd-plants.webp');
     background-size: cover;
   }
 } /* desktops */
-
-@media (min-width: 1200px) {} /* large desktops */
-
-@media (min-width: 1400px) {} /* larger desktops */

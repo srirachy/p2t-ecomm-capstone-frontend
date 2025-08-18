@@ -52,6 +52,7 @@
   .order-status {
     text-align: left;
   }
+
 } /* landscape phones */
 
 @media (min-width: 768px) {
@@ -59,12 +60,25 @@
     padding: 1.25rem;
   }
   .label {
-    display: none;
+    font-size: 1rem;
   }
   .order-id,
   .order-status,
   .order-total {
     flex-direction: row;
     gap: 0.5rem;
+  }
+
+  .order-total {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .order-total {
+    justify-content: center;
+    align-items: center;
+  }
+  .order-total > .label {
+    margin-bottom: 0;
   }
 } /* tablets */

@@ -4,7 +4,7 @@
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  background-color: white;
+  background-color: var(--errigal-white);
   text-align: center;
 }
 
@@ -16,11 +16,11 @@
 .payment-title {
   font-size: 1.8rem;
   margin-bottom: 1rem;
-  color: #333;
+  color: var(--brassy-brass);
 }
 
 .payment-message {
-  color: #666;
+  color: var(--swamp-fox);
   margin-bottom: 1.5rem;
   line-height: 1.6;
 }
@@ -44,29 +44,29 @@
 }
 
 .btn-primary {
-  background-color: #2563eb;
-  color: white;
+  background-color: var(--brassy-brass);
+  color: var(--errigal-white);
 }
 
 .btn-primary:hover {
-  background-color: #1d4ed8;
+  background-color: var(--swamp-fox);
 }
 
 .btn-outline {
   background-color: transparent;
-  color: #2563eb;
-  border: 1px solid #2563eb;
+  color: var(--chesty-bond);
+  border: 1px solid var(--swamp-fox);
 }
 
 .btn-outline:hover {
-  background-color: #f0f5ff;
+  background-color: var(--brassy-brass);
 }
 
 .btn-danger {
-  background-color: #dc2626;
-  color: white;
+  background-color: var(--pearly-purple);
+  color: var(--errigal-white);
 }
 
 .btn-danger:hover {
-  background-color: #b91c1c;
+  background-color: var(--antique-fuschia);
 }
