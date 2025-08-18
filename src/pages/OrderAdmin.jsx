@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { readDataWithHeaders } from "../api/services";
 import { BACKEND_ROUTES } from "../constants";
+import '../styles/OrderAdmin.css'
 
 const OrderAdmin = () => {
   const [orders, setOrders] = useState([]);
@@ -32,43 +33,43 @@ const OrderAdmin = () => {
     try {} catch ( error ) {}
   }
   return (
-    <>
-      <div>OrderAdmin</div>
-      {orders.length > 0 
-        ? (
-          <div>
-            {orders.map(({orderNumber, isPaid, isDeliver}) => (
-              <React.Fragment key={orderNumber}>
-                <p>Order: {orderNumber}</p>
-                <p>Paid: {isPaid ? `💰` : `🙅‍♂️`}</p>
-                <div>
-                  <label>Delivery Status:</label>
-                  <select
-                    value={isDeliver.toString()}
-                    onChange={(e) => handleDeliveryChange(orderNumber, e.target.value === 'true')}
-                  >
-                    <option value="true">Delivered</option>
-                    <option value="false">Not Delivered</option>
-                  </select>
-                </div>
-              </React.Fragment>
-            ))}
-            <button
-              onClick={() => handleSendUpdate()}
-              id='update-button'
-              disabled={orders.length === 0}
-            >
-              Update All Orders
-            </button>
+  <section id="order-admin-container">
+    <h1>Order Admin</h1>
+    {orders.length > 0 ? (
+      <div>
+        {orders.map(({ orderNumber, isPaid, isDeliver }) => (
+          <div className="order-card" key={orderNumber}>
+            <div className="order-info">
+              <h3>Order: {orderNumber}</h3>
+              <div className="paid-status">
+                <label className="paid-status">Paid Status: </label>
+                <p>{isPaid ? "💰" : "🙅‍♂️"}</p>
+              </div>
+            </div>
+            <div className="admin-order-status">
+              <label>Delivery Status:</label>
+              <select
+                value={isDeliver.toString()}
+                onChange={(e) => handleDeliveryChange(orderNumber, e.target.value === "true")}
+              >
+                <option value="true">Delivered</option>
+                <option value="false">Not Delivered</option>
+              </select>
+            </div>
           </div>
-        )
-        : (
-          <>
-            <p>No orders available</p>
-          </>
-        )
-      }
-    </>
+        ))}
+        <button
+          onClick={handleSendUpdate}
+          id="update-button"
+          disabled={orders.length === 0}
+        >
+          Update All Orders
+        </button>
+      </div>
+    ) : (
+      <p className="no-orders">No orders available</p>
+    )}
+  </section>
   )
 }
 

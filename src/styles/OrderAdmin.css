@@ -1,0 +1,149 @@
+#order-admin-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+#order-admin-container > h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--midnight-ocean);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.order-card {
+  border: 1px solid var(--chesty-bond);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.order-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.order-info > h3 {
+  font-weight: 600;
+  color: var(--midnight-ocean);
+}
+
+.paid-status {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: start;
+    width:100%;
+}
+
+.paid-status label,
+.paid-status > p {
+    width: 100%;
+}
+
+.paid-status label {
+  font-weight: 600;
+  color: var(--midnight-ocean);
+}
+
+.paid-status > p {
+  color: var(--chesty-bond);
+  text-align: center;
+  font-size: 1.6rem
+}
+
+.admin-order-status {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.admin-order-status label {
+  font-weight: 600;
+  color: var(--midnight-ocean);
+  text-align: left;
+}
+
+.admin-order-status select {
+  padding: 0.5rem;
+  border: 1px solid var(--chesty-bond);
+  border-radius: 4px;
+  background-color: var(--errigal-white);
+}
+
+/* Payment Status */
+.paid-status {
+  font-size: 1.2rem;
+}
+
+/* Update Button */
+#update-button {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--midnight-ocean);
+  color: var(--errigal-white);
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  transition: opacity 0.2s;
+}
+
+#update-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#update-button:hover {
+    background-color: var(--chesty-bond);
+}
+
+.no-orders {
+  text-align: center;
+  color: var(--chesty-bond);
+  padding: 2rem;
+}
+
+
+@media (min-width: 576px) {
+  .order-card {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+
+  .order-info {
+    flex-direction: row;
+  }
+
+  .paid-status > p {
+    text-align: left;
+  }
+
+  .admin-order-status {
+    flex-direction: row;
+    align-items: center;
+  }
+} /* landscape phones */
+
+@media (min-width: 768px) { /* tablets */
+  .order-card {
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 992px) {
+  #order-admin-container {
+    padding: 2rem;
+  }
+} /* desktops */

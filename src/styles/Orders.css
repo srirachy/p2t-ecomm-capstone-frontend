@@ -23,7 +23,7 @@
 
 .label {
   font-size: 0.8rem;
-  color: #666;
+  color: var(--swamp-fox);
   margin-bottom: 0.2rem;
 }
 
@@ -32,14 +32,14 @@
 }
 
 .order-status.delivered {
-  color: #28a745; 
+  color: var(--chesty-bond); 
 }
 .order-status.pending {
-  color: #ffc107; 
+  color: var(--antique-fuschia); 
 }
 
 .no-orders {
-  color: #6c757d;
+  color: var(--brassy-brass);
   text-align: center;
 }
 
