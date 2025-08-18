@@ -141,7 +141,7 @@ const NavBar = () => {
 
               
             </div>
-            <div id='auth-container' className={`${isAuthenticated && 'auth-container-logged'}`}>
+            <div id='auth-container' className={`${isAuthenticated ? 'auth-container-logged' : ''}`}>
               {isAuthenticated ? <LogoutButton isMobile={isMobile} /> : <LoginButton isMobile={isMobile} />}
             </div>
           </div>

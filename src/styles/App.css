@@ -81,6 +81,10 @@ span {
     font-size: 2rem;
 }
 
+.disabled {
+  
+}
+
 @media (min-width: 768px) {
   section, aside {
     padding: 8px 0px;

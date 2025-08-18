@@ -137,7 +137,7 @@
   #product-admin-category-grid {
     grid-template-columns: repeat(3, 1fr);
   }
-} /* landscape phones */
+}
 
 @media (min-width: 768px) {
   #product-admin-form {
@@ -151,7 +151,7 @@
   #product-admin-category-grid {
     grid-template-columns: repeat(4, 1fr);
   }
-} /* tablets */
+}
 
 @media (min-width: 992px) {
   #product-admin-container {
@@ -162,4 +162,4 @@
     width: 100px;
     height: 100px;
   }
-} /* desktops */
+}

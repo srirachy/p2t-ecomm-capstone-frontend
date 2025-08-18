@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { readDataWithHeaders } from "../api/services";
+import { readDataWithHeaders, updateData } from "../api/services";
 import { BACKEND_ROUTES } from "../constants";
 import '../styles/OrderAdmin.css'
 
 const OrderAdmin = () => {
   const [orders, setOrders] = useState([]);
+  const [refresh, setRefresh] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const { getAccessTokenSilently } = useAuth0();
 
   useEffect(() => {
@@ -19,19 +21,40 @@ const OrderAdmin = () => {
       }
     }
     fetchAllOrders()
-  }, []);
+  }, [refresh]);
 
   const handleDeliveryChange = async (orderNum, newStatus) => {
     try {
+      setIsLoading(true);
       setOrders(orders.map(order => order.orderNumber === orderNum ? {...order, isDeliver: newStatus} : order));
+      setIsLoading(false);
     } catch ( error ) {
       console.error('Failed to update delivery status:', error);
     }
   }
 
   const handleSendUpdate = async () => {
-    try {} catch ( error ) {}
+    try {
+      const token = await getAccessTokenSilently();
+      const requestData = {
+        updatedOrders: orders.map(({id, isDeliver}) => ({
+          id,
+          isDeliver,
+        })),
+      };
+      const res = await updateData(`${BACKEND_ROUTES.ORDER}/update-orders`, token, requestData);
+
+      if (!res) {
+        throw new Error(res.message || 'Failed to update orders');
+      }
+
+      console.log('Delivery update(s) successful');
+      setRefresh(prev => !prev);
+    } catch ( error ) {
+      console.error('Error:', error);
+    }
   }
+
   return (
   <section id="order-admin-container">
     <h1>Order Admin</h1>
@@ -61,7 +84,7 @@ const OrderAdmin = () => {
         <button
           onClick={handleSendUpdate}
           id="update-button"
-          disabled={orders.length === 0}
+          disabled={orders.length === 0 || isLoading}
         >
           Update All Orders
         </button>

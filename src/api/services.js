@@ -77,8 +77,9 @@ export const updateData = async (route, tkn, body) => {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${tkn}`
             },
-            body
+            body: JSON.stringify(body),
         });
+
         if(!res.ok) {
             throw new Error(`HTTP error! status: ${res.status}`);
         }
