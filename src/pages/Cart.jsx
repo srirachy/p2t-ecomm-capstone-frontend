@@ -59,14 +59,15 @@ const Cart = () => {
                         
                         <h3 className="cart-item-name">{item.product.name}</h3>
                         
+                        {/* Todo: Wrap this in loading component, or disable +/- while updating */}
                         <div className="cart-item-quantity">
-                        <button onClick={() => updateQuantity(item.product._id, item.quantity - 1)}>
-                            {`-`}
-                        </button>
-                        <span>{item.quantity}</span>
-                        <button onClick={() => updateQuantity(item.product._id, item.quantity + 1)}>
-                            {`+`}
-                        </button>
+                            <button onClick={() => updateQuantity(item.product._id, item.quantity - 1)}>
+                                {`-`}
+                            </button>
+                            <span>{item.quantity}</span>
+                            <button onClick={() => updateQuantity(item.product._id, item.quantity + 1)}>
+                                {`+`}
+                            </button>
                         </div>
                         
                         <p className="cart-item-price">
