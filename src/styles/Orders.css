@@ -52,8 +52,7 @@
   .order-status {
     text-align: left;
   }
-
-} /* landscape phones */
+}
 
 @media (min-width: 768px) {
   .order-card {
@@ -81,4 +80,4 @@
   .order-total > .label {
     margin-bottom: 0;
   }
-} /* tablets */
+}

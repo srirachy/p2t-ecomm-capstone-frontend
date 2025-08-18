@@ -1,7 +1,5 @@
 import '../styles/ProductCard.css';
 
-// import { Link } from 'react-router';
-
 const ProductCard = ({id, name, price, images, longDescription: longDesc, deleteProduct, isAdmin, user, addToCart}) => {
   
   return (

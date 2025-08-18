@@ -125,7 +125,7 @@ nav {
     .auth-container-logged {
         margin-top: auto;
     }
-} /* landscape */
+}
 
 
 @media (min-width: 768px) {
@@ -208,4 +208,4 @@ nav {
         from {transform: rotate(0deg);}
         to {transform: rotate(180deg);}
     }
-} /* tablets */
+}

@@ -87,7 +87,7 @@ const NavBar = () => {
                 {isAuthenticated ? <LogoutButton isMobile={isMobile} toggleMenu={toggleMenu} /> : <LoginButton isMobile={isMobile} toggleMenu={toggleMenu} />}
               </div>
             </div>
-          </> // my navBar when its mobile
+          </>
           :
           <div id='link-auth-container'>
             <div id='link-container'>
@@ -144,7 +144,7 @@ const NavBar = () => {
             <div id='auth-container' className={`${isAuthenticated && 'auth-container-logged'}`}>
               {isAuthenticated ? <LogoutButton isMobile={isMobile} /> : <LoginButton isMobile={isMobile} />}
             </div>
-          </div> // my navBar when its desktop
+          </div>
         }
       </div>
     </nav>

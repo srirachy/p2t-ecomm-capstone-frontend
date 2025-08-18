@@ -2,7 +2,6 @@
     width: 100%;
     min-height: 1vh;
     background-color: var(--speed-of-light);
-    /* padding: 0; */
 }
 
 #socials-container {
@@ -31,4 +30,4 @@
         width: 3rem;
         height: 3rem;
     }
-} /* desktops */
+}

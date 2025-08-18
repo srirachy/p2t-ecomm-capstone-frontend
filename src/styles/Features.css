@@ -29,10 +29,10 @@
         width: 50%;
         padding: 20px;
     }
-} /* tablets */
+}
 
 @media (min-width: 992px) {
     #feature-img-container, #features-container {
         padding: 80px;
     }
-} /* desktops */
+}

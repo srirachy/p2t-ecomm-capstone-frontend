@@ -85,13 +85,12 @@ span {
   section, aside {
     padding: 8px 0px;
   }
-} /* tablets */
+}
 
 @media (min-width: 992px) {
   main {
     max-width: 80%;
     margin: 0 auto;
-    /* background-color: var(--errigal-white); */
   }
 
   section, aside {
@@ -113,4 +112,4 @@ span {
   p, span {
     font-size: 1rem;
   }
-} /* desktops */
+}

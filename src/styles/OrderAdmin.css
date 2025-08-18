@@ -80,12 +80,10 @@
   background-color: var(--errigal-white);
 }
 
-/* Payment Status */
 .paid-status {
   font-size: 1.2rem;
 }
 
-/* Update Button */
 #update-button {
   width: 100%;
   padding: 1rem;
@@ -133,7 +131,7 @@
     flex-direction: row;
     align-items: center;
   }
-} /* landscape phones */
+}
 
 @media (min-width: 768px) { /* tablets */
   .order-card {
@@ -146,4 +144,4 @@
   #order-admin-container {
     padding: 2rem;
   }
-} /* desktops */
+}
