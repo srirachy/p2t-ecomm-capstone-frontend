@@ -8,7 +8,7 @@ const LoginButton = ({isMobile, toggleMenu}) => {
     loginWithRedirect();
   }
 
-  return isMobile ? <span className='dropdown-item' onClick={() => mobileLogin()}>Log In</span>: <button onClick={() => loginWithRedirect()}><span>Log In</span></button>;
+  return isMobile ? <span className='dropdown-item' onClick={() => mobileLogin()}>Log In</span>: <button className='auth-button' onClick={() => loginWithRedirect()}><span>Log In</span></button>;
 }
 
 export default LoginButton;

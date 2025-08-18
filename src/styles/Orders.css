@@ -1,0 +1,70 @@
+.orders-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.order-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.order-id,
+.order-status,
+.order-total {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 0.8rem;
+  color: #666;
+  margin-bottom: 0.2rem;
+}
+
+.order-status {
+  text-align: right;
+}
+
+.order-status.delivered {
+  color: #28a745; 
+}
+.order-status.pending {
+  color: #ffc107; 
+}
+
+.no-orders {
+  color: #6c757d;
+  text-align: center;
+}
+
+@media (min-width: 576px) {
+  .order-card {
+    grid-template-columns: 2fr 1fr 1fr;
+    align-items: center;
+    gap: 1rem;
+  }
+  .order-status {
+    text-align: left;
+  }
+} /* landscape phones */
+
+@media (min-width: 768px) {
+  .order-card {
+    padding: 1.25rem;
+  }
+  .label {
+    display: none;
+  }
+  .order-id,
+  .order-status,
+  .order-total {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+} /* tablets */

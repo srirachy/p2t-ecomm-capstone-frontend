@@ -6,7 +6,7 @@ const CTA = () => {
       <div id='cta-container'>
           <h3>Join our Elite Club today!</h3>
           <p>Free for 14 days. No credit card required.</p>
-          <button>Get Started</button>
+          <button><span>Get Started</span></button>
       </div>
     </section>
   )

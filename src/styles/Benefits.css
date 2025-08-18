@@ -5,3 +5,10 @@
     flex-direction: column;
     background-color: var(--errigal-white);
 }
+
+@media (min-width: 768px) {
+    #benefit-section {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+} /* tablets */

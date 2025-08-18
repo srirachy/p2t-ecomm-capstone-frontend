@@ -4,6 +4,7 @@ body {
   place-items: center;
   min-width: 100vw;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 :root {
@@ -14,5 +15,26 @@ body {
   --swamp-fox: #b59b67;
   --midnight-ocean: #0b254b;
   --chesty-bond: #4e6ea0;
+  --pearly-purple: #b56795;
+  --antique-fuschia: #8b667b;
+  --sm: 576px;
+  --md: 768px;
+  --lg: 992px;
+  --xl: 1200px;
+  --xxl: 1400px;
 }
 
+@media (min-width: 576px) {} /* landscape phones */
+
+@media (min-width: 768px) {} /* tablets */
+
+@media (min-width: 992px) {
+  body {
+    background-image: url('../assets/bkgd-plants.webp');
+    background-size: cover;
+  }
+} /* desktops */
+
+@media (min-width: 1200px) {} /* large desktops */
+
+@media (min-width: 1400px) {} /* larger desktops */

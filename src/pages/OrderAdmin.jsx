@@ -40,7 +40,7 @@ const OrderAdmin = () => {
             {orders.map(({orderNumber, isPaid, isDeliver}) => (
               <React.Fragment key={orderNumber}>
                 <p>Order: {orderNumber}</p>
-                <p>Paid: {isPaid.toString()}</p>
+                <p>Paid: {isPaid ? `💰` : `🙅‍♂️`}</p>
                 <div>
                   <label>Delivery Status:</label>
                   <select

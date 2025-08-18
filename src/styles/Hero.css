@@ -18,10 +18,26 @@
 #hero-img-container {
     /* padding: 0; */
     margin: 6px auto;
-    width: 360px;
+    width: 80%;
 }
 
 #hero-img-container > img {
     width: 100%;
     border-radius: 12px;
 }
+
+@media (min-width: 768px) {
+    #hero-img-container {
+        width: 55%;
+    }
+} /* tablets */
+
+@media (min-width: 992px) {
+    #hero-img-container {
+        width: 70%;
+    }
+
+    #hero-text-container > button {
+        margin: 12px auto;
+    }
+} /* desktops */

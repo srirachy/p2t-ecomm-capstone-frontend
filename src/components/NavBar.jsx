@@ -46,113 +46,107 @@ const NavBar = () => {
 
   return (
     <nav>
-      <div id='logo-container'>
-        <Link to={ROUTES.HOME}><img id='logo' src={Logo} alt='Image of Logo' /></Link>
-      </div>
-      {isMobile ? 
-        <>
-          <button className='hamburger' onClick={toggleMenu} aria-label='menu'>
-            {isOpen ? <FaTimes size={24} />: <FaBars size={24} /> }
-          </button>
-          <div className={`ham-menu ${isMobile ? (isOpen ? "active" : "hidden") : ""}`}>
-            <Link to={ROUTES.PRODUCTS} className='dropdown-item' onClick={toggleMenu}>Products</Link>
-            {
-              isAuthenticated &&
-              <>
-                <Link to={ROUTES.CART} className='dropdown-item' onClick={toggleMenu}>Cart</Link>
-                <Link to={ROUTES.ORDERS_USER} className='dropdown-item' onClick={toggleMenu}>Orders</Link>
-              </>
-            }
-            {isAdmin && (
-              <>
-                <Link
-                  to={ROUTES.ADMIN.PRODUCTS_CREATE}
-                  className='dropdown-item'
-                  onClick={toggleMenu}
-                >
-                  Add Product
-                </Link>
-                <Link
-                  to={ROUTES.ADMIN.ORDERS}
-                  className='dropdown-item'
-                  onClick={toggleMenu}
-                >
-                  View Orders
-                </Link>
-              </>
-            )}
-           
-            <div id='auth-container'>
-              {isAuthenticated ? <LogoutButton isMobile={isMobile} toggleMenu={toggleMenu} /> : <LoginButton isMobile={isMobile} toggleMenu={toggleMenu} />}
+      <div id='nav-container'>
+        <div id='logo-container'>
+          <Link to={ROUTES.HOME}><img id='logo' src={Logo} alt='Image of Logo' /></Link>
+        </div>
+        {isMobile ? 
+          <>
+            <button className='hamburger' onClick={toggleMenu} aria-label='menu'>
+              {isOpen ? <FaTimes size={24} />: <FaBars size={24} /> }
+            </button>
+            <div className={`ham-menu ${isMobile ? (isOpen ? "active" : "hidden") : ""}`}>
+              <Link to={ROUTES.PRODUCTS} className='dropdown-item' onClick={toggleMenu}>Products</Link>
+              {
+                isAuthenticated &&
+                <>
+                  <Link to={ROUTES.CART} className='dropdown-item' onClick={toggleMenu}>Cart</Link>
+                  <Link to={ROUTES.ORDERS_USER} className='dropdown-item' onClick={toggleMenu}>Orders</Link>
+                </>
+              }
+              {isAdmin && (
+                <>
+                  <Link
+                    to={ROUTES.ADMIN.PRODUCTS_CREATE}
+                    className='dropdown-item'
+                    onClick={toggleMenu}
+                  >
+                    Add Product
+                  </Link>
+                  <Link
+                    to={ROUTES.ADMIN.ORDERS}
+                    className='dropdown-item'
+                    onClick={toggleMenu}
+                  >
+                    View Orders
+                  </Link>
+                </>
+              )}
+            
+              <div id='auth-container'>
+                {isAuthenticated ? <LogoutButton isMobile={isMobile} toggleMenu={toggleMenu} /> : <LoginButton isMobile={isMobile} toggleMenu={toggleMenu} />}
+              </div>
             </div>
-          </div>
-        </> // my navBar when its mobile
-        :
-        <>
-          <div id='link-container'>
-            <Link to={ROUTES.PRODUCTS}>Products</Link>
-            {
-              isAuthenticated && 
-              <>
-                <Link to={ROUTES.CART}>Cart</Link>
-                <Link to={ROUTES.ORDERS_USER}>Orders</Link>
-              </>
-            }
-            {isAdmin && (
-              <>
-                {!isMobile 
-                  ? 
-                  (
-                    <>
-                      <Link to={ROUTES.ADMIN.PRODUCTS_CREATE}>
-                        Add Product
-                      </Link>
-                      <Link to={ROUTES.ADMIN.ORDERS}>
-                        View Orders
-                      </Link>
-                    </>
-                  ) 
-                  : 
-                  (
-                    <div id='dropdown-container'>
-                      <button
-                        id='dropdown-toggle'
-                        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                      >
-                        Admin
-                        <span id={`dropdown-arrow${isDropdownOpen ? '-open' : ''}`}>
-                          ▼
-                        </span>
-                      </button>
+          </> // my navBar when its mobile
+          :
+          <div id='link-auth-container'>
+            <div id='link-container'>
+              <Link to={ROUTES.PRODUCTS}>Products</Link>
+              {
+                isAuthenticated && 
+                <>
+                  <Link to={ROUTES.CART}>Cart</Link>
+                  <Link to={ROUTES.ORDERS_USER}>Orders</Link>
+                </>
+              }
+              {isAdmin && (
+                
+                      <div id='dropdown-container'>
+                        <button
+                          id='dropdown-toggle'
+                          onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                        >
+                          <span>
+                            Admin
+                          </span>
+                          <span id={`dropdown-arrow${isDropdownOpen ? '-open' : ''}`}>
+                            ▼
+                          </span>
+                        </button>
 
-                      {isDropdownOpen && (
-                        <div id='dropdown-menu'>
-                          <Link
-                            to={ROUTES.ADMIN.PRODUCTS_CREATE}
-                            className='dropdown-item'
-                            onClick={() => setIsDropdownOpen(false)}
-                          >
-                            Add Product
-                          </Link>
-                          <Link
-                            to={ROUTES.ADMIN.ORDERS}
-                            className='dropdown-item'
-                            onClick={() => setIsDropdownOpen(false)}
-                          >
-                            View Orders
-                          </Link>
-                        </div>
-                      )}
-                    </div>
-                  )}
-              </>
-            )}
-          </div>
-          <div id='auth-container'>
-            {isAuthenticated ? <LogoutButton isMobile={isMobile} /> : <LoginButton isMobile={isMobile} />}
-          </div>
-        </> // my navBar when its desktop
-      }
+                        {isDropdownOpen && (
+                          <div id='dropdown-menu'>
+                            <Link
+                              to={ROUTES.ADMIN.PRODUCTS_CREATE}
+                              className='dropdown-item'
+                              onClick={() => setIsDropdownOpen(false)}
+                            >
+                              <span>
+                                Add Product
+                              </span>
+                            </Link>
+                            <Link
+                              to={ROUTES.ADMIN.ORDERS}
+                              className='dropdown-item'
+                              onClick={() => setIsDropdownOpen(false)}
+                            >
+                              <span>
+                                View Orders
+                              </span>
+                            </Link>
+                          </div>
+                        )}
+                      </div>
+                    )}
+
+              
+            </div>
+            <div id='auth-container'>
+              {isAuthenticated ? <LogoutButton isMobile={isMobile} /> : <LoginButton isMobile={isMobile} />}
+            </div>
+          </div> // my navBar when its desktop
+        }
+      </div>
     </nav>
   )
 }
