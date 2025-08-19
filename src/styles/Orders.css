@@ -38,9 +38,10 @@
   color: var(--antique-fuschia); 
 }
 
-.no-orders {
+#no-orders {
   color: var(--brassy-brass);
   text-align: center;
+  margin-top: 20px;
 }
 
 @media (min-width: 576px) {

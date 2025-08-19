@@ -77,6 +77,11 @@
     color: var(--errigal-white);
 }
 
+.product-button-container > .added-to-cart {
+  background-color: var(--chesty-bond);
+  transition: background-color 0.3s ease;
+}
+
 @media (min-width: 768px) {
     .product-text-container, .product-button-container {
         width: 80%;
