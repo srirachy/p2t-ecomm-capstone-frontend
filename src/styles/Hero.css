@@ -16,7 +16,6 @@
 }
 
 #hero-img-container {
-    /* padding: 0; */
     margin: 6px auto;
     width: 80%;
 }
@@ -30,7 +29,7 @@
     #hero-img-container {
         width: 55%;
     }
-} /* tablets */
+}
 
 @media (min-width: 992px) {
     #hero-img-container {
@@ -40,4 +39,4 @@
     #hero-text-container > button {
         margin: 12px auto;
     }
-} /* desktops */
+}

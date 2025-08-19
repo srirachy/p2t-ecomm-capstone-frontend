@@ -1,8 +1,6 @@
 import '../styles/ProductCard.css';
 
-// import { Link } from 'react-router';
-
-const ProductCard = ({id, name, price, images, longDescription: longDesc, deleteProduct, isAdmin, user, addToCart}) => {
+const ProductCard = ({id, name, price, images, longDescription: longDesc, deleteProduct, isAdmin, user, addToCart, recentlyAdded}) => {
   
   return (
     <div className='product-card'>
@@ -18,7 +16,12 @@ const ProductCard = ({id, name, price, images, longDescription: longDesc, delete
       </div>
       <div className='product-button-container'>
         { user &&
-          <button onClick={() => addToCart(id, 1)}>Add to Cart</button>
+          <button 
+            onClick={() => addToCart(id, 1)}
+            className={recentlyAdded === id ? 'added-to-cart' : ''}
+          >
+            {recentlyAdded === id ? '✓ Added!' : 'Add to Cart'}
+          </button>
         }
         { isAdmin &&
           <button id='delete-product-btn' onClick={() => deleteProduct(id)}>Delete</button>

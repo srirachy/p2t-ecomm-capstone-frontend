@@ -23,7 +23,7 @@
 
 .label {
   font-size: 0.8rem;
-  color: #666;
+  color: var(--swamp-fox);
   margin-bottom: 0.2rem;
 }
 
@@ -32,15 +32,16 @@
 }
 
 .order-status.delivered {
-  color: #28a745; 
+  color: var(--chesty-bond); 
 }
 .order-status.pending {
-  color: #ffc107; 
+  color: var(--antique-fuschia); 
 }
 
-.no-orders {
-  color: #6c757d;
+#no-orders {
+  color: var(--brassy-brass);
   text-align: center;
+  margin-top: 20px;
 }
 
 @media (min-width: 576px) {
@@ -52,14 +53,14 @@
   .order-status {
     text-align: left;
   }
-} /* landscape phones */
+}
 
 @media (min-width: 768px) {
   .order-card {
     padding: 1.25rem;
   }
   .label {
-    display: none;
+    font-size: 1rem;
   }
   .order-id,
   .order-status,
@@ -67,4 +68,17 @@
     flex-direction: row;
     gap: 0.5rem;
   }
-} /* tablets */
+
+  .order-total {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .order-total {
+    justify-content: center;
+    align-items: center;
+  }
+  .order-total > .label {
+    margin-bottom: 0;
+  }
+}

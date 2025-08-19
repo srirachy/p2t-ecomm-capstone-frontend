@@ -1,4 +1,12 @@
-/* ===== Base (Mobile) Styles ===== */
+#cart-page {
+  width: 100%;
+  min-height: 1vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 .cart-items {
   list-style: none;
   padding: 0;
@@ -74,6 +82,12 @@
   cursor: pointer;
 }
 
+#no-cart {
+  color: var(--brassy-brass);
+  text-align: center;
+  margin-top: 20px;
+}
+
 @media (min-width: 576px) {
   .cart-item {
     flex-direction: row;
@@ -92,7 +106,7 @@
     min-width: 120px;
     padding: 0 1rem;
   }
-} /* landscape */
+}
 
 @media (min-width: 768px) {
   .cart-item {
@@ -108,10 +122,10 @@
   .cart-item-remove {
     align-self: center;
   }
-} /* tablets */
+}
 
 @media (min-width: 992px) {
   .cart-total {
     text-align: right;
   }
-} /* desktops */
+}

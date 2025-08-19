@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { loadStripe } from '@stripe/stripe-js';
-import { createData, readDataWithHeaders } from '../api/services';
+import { createData, deleteData, readDataWithHeaders, updateData } from '../api/services';
 import { BACKEND_ROUTES } from "../constants";
 import { FaTimes } from 'react-icons/fa';
 import cartSlice from "../store"
@@ -9,6 +9,8 @@ import '../styles/Cart.css';
 
 const Cart = () => {
     const { cart, setCart } = cartSlice();
+    const [ refresh, setRefresh ] = useState(false);
+    const [ isLoading, setIsLoading ] = useState(false);
     const { getAccessTokenSilently, isAuthenticated } = useAuth0();
 
     useEffect(() => {
@@ -22,14 +24,14 @@ const Cart = () => {
             }
         }
         isAuthenticated && fetchCart();
-    }, []);
+    }, [refresh]);
 
     const handleCheckout = async () => {
         const stripe = await loadStripe(import.meta.env.VITE_STRIPE_PK);
         const token = await getAccessTokenSilently();
-        const data = JSON.stringify({ items: cart.items });
+        const reqData = JSON.stringify({ items: cart.items });
 
-        const session = await createData(`${BACKEND_ROUTES.PAYMENT}/create-checkout-session`, token, data);
+        const session = await createData(`${BACKEND_ROUTES.PAYMENT}/create-checkout-session`, token, reqData);
 
         const result = await stripe.redirectToCheckout({ sessionId: session.id });
 
@@ -38,13 +40,29 @@ const Cart = () => {
         }
     };
 
-    // To-do: Add logic for quantity control and remove button
-    const updateQuantity = async (id, quantity) => {};
+    const updateQuantity = async (id, quantity) => {
+        setIsLoading(true);
+        const token = await getAccessTokenSilently();
+        const reqData = { id, quantity };
+        const res = await updateData(`${BACKEND_ROUTES.CART}/update`, token, reqData);
+        
+        if(res) {
+            setIsLoading(false);
+            setRefresh(prev => !prev);
+        }
+    };
 
-    const removeFromCart = async (id) => {};
+    const removeFromCart = async (id) => {
+        const token = await getAccessTokenSilently();
+        const res = await deleteData(`${BACKEND_ROUTES.CART}/remove/${id}`, token);
+        
+        if(res) {
+            setRefresh(prev => !prev);
+        }
+    };
   
     return (
-    <>
+    <section id="cart-page">
         <h1>Cart</h1>
         {cart?.items?.length ? (
             <>
@@ -59,13 +77,18 @@ const Cart = () => {
                         
                         <h3 className="cart-item-name">{item.product.name}</h3>
                         
-                        {/* Todo: Wrap this in loading component, or disable +/- while updating */}
                         <div className="cart-item-quantity">
-                            <button onClick={() => updateQuantity(item.product._id, item.quantity - 1)}>
+                            <button 
+                                onClick={() => updateQuantity(item.product._id, item.quantity - 1)}
+                                disabled={isLoading}
+                            >
                                 {`-`}
                             </button>
                             <span>{item.quantity}</span>
-                            <button onClick={() => updateQuantity(item.product._id, item.quantity + 1)}>
+                            <button 
+                                onClick={() => updateQuantity(item.product._id, item.quantity + 1)}
+                                disabled={isLoading}
+                            >
                                 {`+`}
                             </button>
                         </div>
@@ -100,9 +123,9 @@ const Cart = () => {
                 </button>
             </>
             ) : (
-            <p>Your cart is empty</p>
+            <p id="no-cart">Your cart is empty</p>
         )}
-    </>
+    </section>
   )
 }
 

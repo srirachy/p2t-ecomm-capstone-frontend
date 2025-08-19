@@ -53,7 +53,7 @@ footer {
     #footer-link-container > li {
         font-size: 0.8rem;
     }
-} /* landscape phones */
+}
 
 @media (min-width: 768px) {
     #logo-link-container {
@@ -74,10 +74,10 @@ footer {
         align-items: flex-end;
     }
 
-} /* tablets */
+}
 
 @media (min-width: 992px) {
     #footer-link-container > li {
         font-size: 1rem;
     }
-} /* desktops */
+}

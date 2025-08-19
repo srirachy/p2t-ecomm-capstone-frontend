@@ -45,7 +45,7 @@ const Orders = () => {
           ))}
         </ul>
       ) : (
-        <p className="no-orders">No active or completed orders</p>
+        <p id="no-orders">No active or completed orders</p>
       )}
     </>
   )
