@@ -22,7 +22,7 @@ const Orders = () => {
   }, []);
 
   return (
-    <>
+    <section id='orders-page'>
       <h1>Orders</h1>
       {orders.length > 0 ? (
         <ul className="orders-list">
@@ -47,7 +47,7 @@ const Orders = () => {
       ) : (
         <p id="no-orders">No active or completed orders</p>
       )}
-    </>
+    </section>
   )
 }
 
