@@ -21,7 +21,7 @@ body {
   --xxl: 1400px;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   body {
     background-image: url('../assets/bkgd-plants.webp');
     background-size: cover;
